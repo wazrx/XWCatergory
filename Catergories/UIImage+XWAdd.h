@@ -1,0 +1,21 @@
+//
+//  UIImage+XWAdd.h
+//  WxSelected
+//
+//  Created by YouLoft_MacMini on 15/12/29.
+//  Copyright © 2015年 wazrx. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface UIImage (XWAdd)
+/**
+ *  根据颜色生成图片
+ */
++ (UIImage *)xw_imageWithColor:(UIColor *)color imageSize:(CGSize)size;
+
+/**
+ *  截图
+ */
++ (UIImage *)xw_captureWithView:(UIView *)view;
+@end
