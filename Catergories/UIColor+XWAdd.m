@@ -12,7 +12,7 @@
 
 @implementation UIColor (XWAdd)
 
-+ (UIColor *)xw_colorWithHexString:(NSString *)stringToConvert
++ (UIColor *)xwAdd_colorWithHexString:(NSString *)stringToConvert
 {
     NSString *cString = [[stringToConvert stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
     
@@ -47,7 +47,7 @@
                            alpha:1.0f];
 }
 
-+ (NSArray *)xw_changeColorToRGB:(UIColor *)color{
++ (NSArray *)xwAdd_changeColorToRGB:(UIColor *)color{
     
     CGColorSpaceRef rgbColorSpace = CGColorSpaceCreateDeviceRGB();//kCGImageAlphaNoneSkipLast
     unsigned char resultingPixel[4];
@@ -65,9 +65,9 @@
     return @[@(resultingPixel[0] / 255.0f), @(resultingPixel[1] / 255.0f), @(resultingPixel[2] / 255.0f)];
 }
 
-+ (UIColor *)xw_colorWithInterpolationFromValue:(UIColor *)from toValue:(UIColor *)to ratio:(CGFloat)ratio{
-    NSArray *fromColorArray = [self xw_changeColorToRGB:from];
-    NSArray *toColorArray = [self xw_changeColorToRGB:to];
++ (UIColor *)xwAdd_colorWithInterpolationFromValue:(UIColor *)from toValue:(UIColor *)to ratio:(CGFloat)ratio{
+    NSArray *fromColorArray = [self xwAdd_changeColorToRGB:from];
+    NSArray *toColorArray = [self xwAdd_changeColorToRGB:to];
     CGFloat red = [self xwp_interpolationFromValue:[fromColorArray[0] floatValue] toValue:[toColorArray[0] floatValue] ratio:ratio];
     CGFloat green = [self xwp_interpolationFromValue:[fromColorArray[1] floatValue] toValue:[toColorArray[1] floatValue] ratio:ratio];
     CGFloat blue = [self xwp_interpolationFromValue:[fromColorArray[2] floatValue] toValue:[toColorArray[2] floatValue] ratio:ratio];

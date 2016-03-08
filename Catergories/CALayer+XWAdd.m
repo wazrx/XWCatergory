@@ -10,7 +10,7 @@
 
 @implementation CALayer (XWAdd)
 
-- (void)xw_shakeInX{
+- (void)xwAdd_shakeInX{
     CAKeyframeAnimation* anim=[CAKeyframeAnimation animation];
     anim.keyPath=@"transform.translation.x";
     anim.values=@[@(5),@(-5),@(0)];

@@ -13,7 +13,7 @@
 
 @implementation UIActivityIndicatorView (XWAdd)
 
-+ (void)xw_showAnimationInView:(UIView *)view{
++ (void)xwAdd_showAnimationInView:(UIView *)view{
     UIActivityIndicatorView *indicator = objc_getAssociatedObject(view, @"currentIndicator");
     if (!indicator) {
         indicator = [UIActivityIndicatorView new];
@@ -27,7 +27,7 @@
     }
 }
 
-+ (void)xw_stopAnimationInView:(UIView *)view{
++ (void)xwAdd_stopAnimationInView:(UIView *)view{
     UIActivityIndicatorView *indicator = objc_getAssociatedObject(view, @"currentIndicator");
     if (indicator) {
         [indicator stopAnimating];

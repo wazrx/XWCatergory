@@ -10,6 +10,6 @@
 
 @interface CALayer (XWAdd)
 
-- (void)xw_shakeInX;
+- (void)xwAdd_shakeInX;
 
 @end

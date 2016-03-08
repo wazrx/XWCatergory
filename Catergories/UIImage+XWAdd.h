@@ -12,10 +12,10 @@
 /**
  *  根据颜色生成图片
  */
-+ (UIImage *)xw_imageWithColor:(UIColor *)color imageSize:(CGSize)size;
++ (UIImage *)xwAdd_imageWithColor:(UIColor *)color imageSize:(CGSize)size;
 
 /**
  *  截图
  */
-+ (UIImage *)xw_captureWithView:(UIView *)view;
++ (UIImage *)xwAdd_captureWithView:(UIView *)view;
 @end

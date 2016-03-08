@@ -12,22 +12,22 @@
 @implementation UICollectionViewFlowLayout (XWAdd)
 
 +(void)load{
-    method_exchangeImplementations(class_getInstanceMethod([self class], @selector(prepareLayout)), class_getInstanceMethod([self class], @selector(xw_prepareLayout)));
+    method_exchangeImplementations(class_getInstanceMethod([self class], @selector(prepareLayout)), class_getInstanceMethod([self class], @selector(xwAdd_prepareLayout)));
 }
 
-- (void)setXw_fullItem:(BOOL)xw_fullItem{
-    objc_setAssociatedObject(self, "xw_fullItem", @(xw_fullItem), OBJC_ASSOCIATION_ASSIGN);
+- (void)setxwAdd_fullItem:(BOOL)xwAdd_fullItem{
+    objc_setAssociatedObject(self, "xwAdd_fullItem", @(xwAdd_fullItem), OBJC_ASSOCIATION_ASSIGN);
 }
 
-- (BOOL)xw_fullItem{
-    return [objc_getAssociatedObject(self, "xw_fullItem") intValue];
+- (BOOL)xwAdd_fullItem{
+    return [objc_getAssociatedObject(self, "xwAdd_fullItem") intValue];
 }
 
-- (void)xw_prepareLayout{
-    if (self.xw_fullItem) {
+- (void)xwAdd_prepareLayout{
+    if (self.xwAdd_fullItem) {
         self.itemSize = self.collectionView.bounds.size;
     }
-    [self xw_prepareLayout];
+    [self xwAdd_prepareLayout];
 }
 
 @end

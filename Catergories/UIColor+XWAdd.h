@@ -12,7 +12,7 @@
 /**
  *  颜色转RGB
  */
-+ (NSArray *)xw_changeColorToRGB:(UIColor *)color;
++ (NSArray *)xwAdd_changeColorToRGB:(UIColor *)color;
 
 /**
  *  16进制颜色字符串转UIColor
@@ -21,7 +21,7 @@
  *
  *  @return 对应的IColor
  */
-+ (UIColor *)xw_colorWithHexString:(NSString *)stringToConvert;
++ (UIColor *)xwAdd_colorWithHexString:(NSString *)stringToConvert;
 /**
  *  插值两种颜色返回中间的颜色
  *
@@ -31,6 +31,6 @@
  *
  *  @return 插值色
  */
-+ (UIColor *)xw_colorWithInterpolationFromValue:(UIColor *)from toValue:(UIColor *)to ratio:(CGFloat)ratio;
++ (UIColor *)xwAdd_colorWithInterpolationFromValue:(UIColor *)from toValue:(UIColor *)to ratio:(CGFloat)ratio;
 
 @end

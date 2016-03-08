@@ -11,7 +11,7 @@
 
 @implementation UMOnlineConfig (XWAdd)
 
-+ (BOOL)xw_isCheckingNewVersion{
++ (BOOL)xwAdd_isCheckingNewVersion{
     return [[UMOnlineConfig getConfigParams:versionControlString] isEqualToString:[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"]] || ![[UMOnlineConfig getConfigParams:versionControlString] boolValue];
 }
 

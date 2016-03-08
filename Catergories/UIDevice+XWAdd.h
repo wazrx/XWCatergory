@@ -12,10 +12,10 @@ typedef void(^uideviceBlock)(BOOL success);
 
 @interface UIDevice (XWAdd)
 
-+ (BOOL)xw_isAllowedNotification;
++ (BOOL)xwAdd_isAllowedNotification;
 
-+ (CGFloat)xw_getCurrentSystemVersion;
++ (CGFloat)xwAdd_getCurrentSystemVersion;
 
-+ (void)xw_openSystemNotificationSettingPageWithCompleteHandle:(uideviceBlock)completeBlock;
++ (void)xwAdd_openSystemNotificationSettingPageWithCompleteHandle:(uideviceBlock)completeBlock;
 
 @end

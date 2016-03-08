@@ -18,7 +18,7 @@
  *
  *  @return 自适应后的尺寸
  */
-- (CGSize)xw_sizeWithfont:(UIFont *)font maxSize:(CGSize)maxSize;
+- (CGSize)xwAdd_sizeWithfont:(UIFont *)font maxSize:(CGSize)maxSize;
 
 /**
  *  根据字符串返回自适应的尺寸,用于计算属性字符串
@@ -29,20 +29,20 @@
  *  @return 自适应后的尺寸
  */
 
-- (CGSize)xw_sizeWithAttrs:(NSDictionary *)attrs maxSize:(CGSize)maxSize;
+- (CGSize)xwAdd_sizeWithAttrs:(NSDictionary *)attrs maxSize:(CGSize)maxSize;
 
 /**
  *  给数字string添加逗号分隔符，自身带有逗号也没有关系，会自动处理,比如1234.5->1,234.5
  */
-- (NSString *)xw_insertCommaFornumberString;
+- (NSString *)xwAdd_insertCommaFornumberString;
 
 /**
  *  删除逗号，返回float值
  */
-- (float)xw_deleteCommaFornumberValue;
+- (float)xwAdd_deleteCommaFornumberValue;
 /**
  *  时间戳转时间
  */
-+ (NSString *)xw_stringWithTimestamp:(NSString *)timestamp format:(NSString *)format;
++ (NSString *)xwAdd_stringWithTimestamp:(NSString *)timestamp format:(NSString *)format;
 
 @end

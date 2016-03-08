@@ -12,6 +12,6 @@
 #define indicatorColor color(203, 184, 112)
 
 @interface UIActivityIndicatorView (XWAdd)
-+ (void)xw_showAnimationInView:(UIView *)view;
-+ (void)xw_stopAnimationInView:(UIView *)view;
++ (void)xwAdd_showAnimationInView:(UIView *)view;
++ (void)xwAdd_stopAnimationInView:(UIView *)view;
 @end

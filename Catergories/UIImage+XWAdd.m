@@ -10,7 +10,7 @@
 
 @implementation UIImage (XWAdd)
 
-+ (UIImage *)xw_imageWithColor:(UIColor *)color imageSize:(CGSize)size{
++ (UIImage *)xwAdd_imageWithColor:(UIColor *)color imageSize:(CGSize)size{
     CGRect rect = CGRectMake(0, 0, size.width, size.height);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -23,7 +23,7 @@
     return image;
 }
 
-+ (UIImage *)xw_captureWithView:(UIView *)view{
++ (UIImage *)xwAdd_captureWithView:(UIView *)view{
     UIGraphicsBeginImageContextWithOptions(view.frame.size, NO, 0.0);
     [view.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();

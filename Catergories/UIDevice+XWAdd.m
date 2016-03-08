@@ -12,8 +12,8 @@ static uideviceBlock notificationSettingCompleteBlock;
 
 @implementation UIDevice (XWAdd)
 
-+ (BOOL)xw_isAllowedNotification{
-    if ([self xw_getCurrentSystemVersion] >= 8.0) {
++ (BOOL)xwAdd_isAllowedNotification{
+    if ([self xwAdd_getCurrentSystemVersion] >= 8.0) {
         UIUserNotificationSettings *setting = [[UIApplication sharedApplication] currentUserNotificationSettings];
         if (UIUserNotificationTypeNone != setting.types) {
             return YES;
@@ -27,13 +27,13 @@ static uideviceBlock notificationSettingCompleteBlock;
     return NO;
 }
 
-+ (CGFloat)xw_getCurrentSystemVersion{
++ (CGFloat)xwAdd_getCurrentSystemVersion{
     return [[UIDevice currentDevice].systemVersion doubleValue];
 }
 
-+ (void)xw_openSystemNotificationSettingPageWithCompleteHandle:(uideviceBlock)completeBlock{
++ (void)xwAdd_openSystemNotificationSettingPageWithCompleteHandle:(uideviceBlock)completeBlock{
     notificationSettingCompleteBlock = completeBlock;
-    if ([self xw_getCurrentSystemVersion] >= 8.0 ) {
+    if ([self xwAdd_getCurrentSystemVersion] >= 8.0 ) {
         NSURL*url =[NSURL URLWithString:UIApplicationOpenSettingsURLString];
         if([[UIApplication sharedApplication] canOpenURL:url]){
             [[UIApplication sharedApplication] openURL:url];
@@ -49,7 +49,7 @@ static uideviceBlock notificationSettingCompleteBlock;
 
 + (void)xwp_setNotifcationAllowed{
     if (notificationSettingCompleteBlock) {
-        notificationSettingCompleteBlock ([self xw_isAllowedNotification]);
+        notificationSettingCompleteBlock ([self xwAdd_isAllowedNotification]);
     }
     notificationSettingCompleteBlock = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];

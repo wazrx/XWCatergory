@@ -13,11 +13,11 @@
 /**
  *  注册信鸽推送
  */
-- (void)xw_registerXGPushWithLaunchOptions:(NSDictionary *)launchOptions;
+- (void)xwAdd_registerXGPushWithLaunchOptions:(NSDictionary *)launchOptions;
 
 /**
  *  注册设备deviceToken
  */
-- (NSString *)xw_registerDeviceToken:(NSData *)deviceToken;
+- (NSString *)xwAdd_registerDeviceToken:(NSData *)deviceToken;
 
 @end

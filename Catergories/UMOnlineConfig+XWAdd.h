@@ -8,10 +8,10 @@
 
 #import "UMOnlineConfig.h"
 
-#define versionControlString @"xw_isCheckingNewVersion"
+#define versionControlString @"xwAdd_isCheckingNewVersion"
 
 @interface UMOnlineConfig (XWAdd)
 
-+ (BOOL)xw_isCheckingNewVersion;
++ (BOOL)xwAdd_isCheckingNewVersion;
 
 @end

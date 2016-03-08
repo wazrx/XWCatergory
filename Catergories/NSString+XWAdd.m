@@ -10,17 +10,17 @@
 
 @implementation NSString (XWAdd)
 
-- (CGSize)xw_sizeWithfont:(UIFont *)font maxSize:(CGSize)maxSize{
+- (CGSize)xwAdd_sizeWithfont:(UIFont *)font maxSize:(CGSize)maxSize{
     
     NSDictionary *attrs = @{NSFontAttributeName : font};
     return [self boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
 }
 
-- (CGSize)xw_sizeWithAttrs:(NSDictionary *)attrs maxSize:(CGSize)maxSize{
+- (CGSize)xwAdd_sizeWithAttrs:(NSDictionary *)attrs maxSize:(CGSize)maxSize{
     return [self boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
 }
 
-- (NSString *)xw_insertCommaFornumberString{
+- (NSString *)xwAdd_insertCommaFornumberString{
     
     NSString *new = [[self componentsSeparatedByString:@","] componentsJoinedByString:@""];
     NSUInteger pointIndex = [new rangeOfString:@"."].location == NSNotFound ? new.length : [new rangeOfString:@"."].location;
@@ -35,7 +35,7 @@
     return reslutStr.copy;
 }
 
-- (float)xw_deleteCommaFornumberValue{
+- (float)xwAdd_deleteCommaFornumberValue{
     NSMutableString *temp = [NSMutableString stringWithString:self];
     [temp replaceOccurrencesOfString:@"," withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, temp.length)];
     return [temp floatValue];
@@ -44,7 +44,7 @@
 /**
  *  时间戳转时间字符串
  */
-+ (NSString *)xw_stringWithTimestamp:(NSString *)timestamp format:(NSString *)format{
++ (NSString *)xwAdd_stringWithTimestamp:(NSString *)timestamp format:(NSString *)format{
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];

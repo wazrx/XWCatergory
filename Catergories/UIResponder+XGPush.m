@@ -14,7 +14,7 @@
 
 @implementation UIResponder (XGPush)
 
-- (void)xw_registerXGPushWithLaunchOptions:(NSDictionary *)launchOptions{
+- (void)xwAdd_registerXGPushWithLaunchOptions:(NSDictionary *)launchOptions{
     //注册信鸽APPKEY
     [XGPush startApp:XGPushID appKey:XGPushKey];
     //注册远程推送
@@ -27,7 +27,7 @@
     [XGPush handleLaunching:launchOptions];
 }
 
-- (NSString *)xw_registerDeviceToken:(NSData *)deviceToken{
+- (NSString *)xwAdd_registerDeviceToken:(NSData *)deviceToken{
     return  [XGPush registerDevice:deviceToken];
 }
 
