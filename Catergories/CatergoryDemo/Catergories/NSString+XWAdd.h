@@ -23,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) NSString *crc32String;
 
+
+@property (nonatomic, readonly) NSString *firstCharUpperString;
+
 #pragma mark - hmac (HMAC 加密相关，通过一个Key值进行加密)
 
 - (NSString *)xwAdd_hmacMD5StringWithKey:(NSString *)key;
@@ -89,9 +92,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**如果有后缀名使用此方法 From @"name.png" to @"name@2x.png".*/
 - (NSString *)xwAdd_stringByAppendingPathScale:(CGFloat)scale;
 
-/**根据屏幕返回想要的几倍图片名*/
-- (NSString *)xwAdd_scaleNameSring;
-- (NSString *)xwAdd_scalePathSring;
+/**返回合适的scaled图片名，如在iphone6p下,优先返回name@3x.type,然后是name@2x.type，最后是name.type*/
+- (NSString *)xwAdd_scaledNameWithType:(NSString *)type;
 
 #pragma mark - blank(空白字符相关)
 

@@ -15,6 +15,11 @@
 		8B1E8DCF1CE5C11E00344F0A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B1E8DCE1CE5C11E00344F0A /* libz.tbd */; };
 		8B1E8DD21CE5CC0B00344F0A /* NSMutableArray+XWAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1E8DD11CE5CC0B00344F0A /* NSMutableArray+XWAdd.m */; };
 		8B1E8DD81CE5D57400344F0A /* NSNotificationCenter+XWAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1E8DD71CE5D57400344F0A /* NSNotificationCenter+XWAdd.m */; };
+		8B52DF9A1CE71F82005C7E76 /* wazrx.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DF991CE71F82005C7E76 /* wazrx.jpg */; };
+		8B52DF9E1CE71FD0005C7E76 /* wazrx@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DF9C1CE71FD0005C7E76 /* wazrx@2x.jpg */; };
+		8B52DFA01CE7205A005C7E76 /* wazrx@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DF9F1CE7205A005C7E76 /* wazrx@3x.jpg */; };
+		8B52DFA31CE722D4005C7E76 /* NSObject+XWAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B52DFA21CE722D4005C7E76 /* NSObject+XWAdd.m */; };
+		8B52DFA61CE746EC005C7E76 /* NSObject+YYAddForKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B52DFA51CE746EC005C7E76 /* NSObject+YYAddForKVO.m */; };
 		8BC5D2481CD986460050D204 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5D2471CD986460050D204 /* main.m */; };
 		8BC5D24B1CD986460050D204 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5D24A1CD986460050D204 /* AppDelegate.m */; };
 		8BC5D24E1CD986460050D204 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5D24D1CD986460050D204 /* ViewController.m */; };
@@ -37,6 +42,7 @@
 		8BC5D2971CD986640050D204 /* UIView+ FrameChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5D2801CD986640050D204 /* UIView+ FrameChange.m */; };
 		8BC5D2981CD986640050D204 /* UIView+XWAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5D2831CD986640050D204 /* UIView+XWAdd.m */; };
 		8BC5D29F1CD987FC0050D204 /* NSMutableDictionary+XWAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5D29E1CD987FC0050D204 /* NSMutableDictionary+XWAdd.m */; };
+		8BDC09651CE7119600C63569 /* NSTimer+XWAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC09641CE7119600C63569 /* NSTimer+XWAdd.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +61,14 @@
 		8B1E8DD11CE5CC0B00344F0A /* NSMutableArray+XWAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+XWAdd.m"; sourceTree = "<group>"; };
 		8B1E8DD61CE5D57400344F0A /* NSNotificationCenter+XWAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+XWAdd.h"; sourceTree = "<group>"; };
 		8B1E8DD71CE5D57400344F0A /* NSNotificationCenter+XWAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+XWAdd.m"; sourceTree = "<group>"; };
+		8B52DF991CE71F82005C7E76 /* wazrx.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wazrx.jpg; sourceTree = "<group>"; };
+		8B52DF9C1CE71FD0005C7E76 /* wazrx@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "wazrx@2x.jpg"; sourceTree = "<group>"; };
+		8B52DF9F1CE7205A005C7E76 /* wazrx@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "wazrx@3x.jpg"; sourceTree = "<group>"; };
+		8B52DFA11CE722D4005C7E76 /* NSObject+XWAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+XWAdd.h"; sourceTree = "<group>"; };
+		8B52DFA21CE722D4005C7E76 /* NSObject+XWAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+XWAdd.m"; sourceTree = "<group>"; };
+		8B52DFA41CE746EC005C7E76 /* NSObject+YYAddForKVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYAddForKVO.h"; sourceTree = "<group>"; };
+		8B52DFA51CE746EC005C7E76 /* NSObject+YYAddForKVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYAddForKVO.m"; sourceTree = "<group>"; };
+		8B52DFA71CE74737005C7E76 /* YYCategoriesMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCategoriesMacro.h; sourceTree = "<group>"; };
 		8BC5D2431CD986460050D204 /* CatergoryDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatergoryDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BC5D2471CD986460050D204 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8BC5D2491CD986460050D204 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -97,6 +111,8 @@
 		8BC5D2831CD986640050D204 /* UIView+XWAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XWAdd.m"; sourceTree = "<group>"; };
 		8BC5D29D1CD987FC0050D204 /* NSMutableDictionary+XWAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+XWAdd.h"; sourceTree = "<group>"; };
 		8BC5D29E1CD987FC0050D204 /* NSMutableDictionary+XWAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+XWAdd.m"; sourceTree = "<group>"; };
+		8BDC09631CE7119600C63569 /* NSTimer+XWAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+XWAdd.h"; sourceTree = "<group>"; };
+		8BDC09641CE7119600C63569 /* NSTimer+XWAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+XWAdd.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +152,12 @@
 				8BC5D24C1CD986460050D204 /* ViewController.h */,
 				8BC5D24D1CD986460050D204 /* ViewController.m */,
 				8BC5D24F1CD986460050D204 /* Main.storyboard */,
+				8B52DF991CE71F82005C7E76 /* wazrx.jpg */,
+				8B52DF9C1CE71FD0005C7E76 /* wazrx@2x.jpg */,
+				8B52DF9F1CE7205A005C7E76 /* wazrx@3x.jpg */,
+				8B52DFA71CE74737005C7E76 /* YYCategoriesMacro.h */,
+				8B52DFA41CE746EC005C7E76 /* NSObject+YYAddForKVO.h */,
+				8B52DFA51CE746EC005C7E76 /* NSObject+YYAddForKVO.m */,
 				8BC5D25D1CD986640050D204 /* Catergories */,
 				8BC5D2521CD986460050D204 /* Assets.xcassets */,
 				8BC5D2541CD986460050D204 /* LaunchScreen.storyboard */,
@@ -178,6 +200,10 @@
 				8BC5D29E1CD987FC0050D204 /* NSMutableDictionary+XWAdd.m */,
 				8B1E8DD61CE5D57400344F0A /* NSNotificationCenter+XWAdd.h */,
 				8B1E8DD71CE5D57400344F0A /* NSNotificationCenter+XWAdd.m */,
+				8BDC09631CE7119600C63569 /* NSTimer+XWAdd.h */,
+				8BDC09641CE7119600C63569 /* NSTimer+XWAdd.m */,
+				8B52DFA11CE722D4005C7E76 /* NSObject+XWAdd.h */,
+				8B52DFA21CE722D4005C7E76 /* NSObject+XWAdd.m */,
 				8BC5D26A1CD986640050D204 /* UIActivityIndicatorView+XWAdd.h */,
 				8BC5D26B1CD986640050D204 /* UIActivityIndicatorView+XWAdd.m */,
 				8BC5D26C1CD986640050D204 /* UIAlertView+XWAdd.h */,
@@ -263,8 +289,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B52DFA01CE7205A005C7E76 /* wazrx@3x.jpg in Resources */,
+				8B52DF9A1CE71F82005C7E76 /* wazrx.jpg in Resources */,
 				8BC5D2561CD986460050D204 /* LaunchScreen.storyboard in Resources */,
 				8BC5D2531CD986460050D204 /* Assets.xcassets in Resources */,
+				8B52DF9E1CE71FD0005C7E76 /* wazrx@2x.jpg in Resources */,
 				8BC5D2511CD986460050D204 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B1E8DC31CE5814000344F0A /* NSDate+XWAdd.m in Sources */,
+				8B52DFA61CE746EC005C7E76 /* NSObject+YYAddForKVO.m in Sources */,
 				8BC5D2931CD986640050D204 /* UIImage+XWAdd.m in Sources */,
 				8BC5D28D1CD986640050D204 /* UIAlertView+XWAdd.m in Sources */,
 				8B1E8DCA1CE5A29300344F0A /* NSData+XWAdd.m in Sources */,
@@ -298,10 +328,12 @@
 				8BC5D24B1CD986460050D204 /* AppDelegate.m in Sources */,
 				8BC5D2861CD986640050D204 /* CALayer+XWAdd.m in Sources */,
 				8BC5D2921CD986640050D204 /* UIDevice+XWAdd.m in Sources */,
+				8B52DFA31CE722D4005C7E76 /* NSObject+XWAdd.m in Sources */,
 				8BC5D2481CD986460050D204 /* main.m in Sources */,
 				8BC5D29F1CD987FC0050D204 /* NSMutableDictionary+XWAdd.m in Sources */,
 				8B1E8DBD1CE5803700344F0A /* NSDictionary+XWAdd.m in Sources */,
 				8BC5D2951CD986640050D204 /* UILabel+XWAdd.m in Sources */,
+				8BDC09651CE7119600C63569 /* NSTimer+XWAdd.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

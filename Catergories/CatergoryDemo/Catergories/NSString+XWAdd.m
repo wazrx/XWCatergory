@@ -349,12 +349,19 @@
     return [self stringByReplacingCharactersInRange:extRange withString:scaleStr];
 }
 
-- (NSString *)xwAdd_scaleNameSring{
-    return [self xwAdd_stringByAppendingNameScale:[UIScreen mainScreen].scale];
-}
-
-- (NSString *)xwAdd_scalePathSring{
-    return [self xwAdd_stringByAppendingPathScale:[UIScreen mainScreen].scale];
+- (NSString *)xwAdd_scaledNameWithType:(NSString *)type{
+    NSArray *scales = [NSString _xwAdd_preferredScales];
+    __block NSString *scaledName = nil;
+    __block NSString *path = nil;
+    [scales enumerateObjectsUsingBlock:^(NSNumber *scale, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *name = [self xwAdd_stringByAppendingNameScale:scale.floatValue];
+        path = [[NSBundle mainBundle] pathForResource:name ofType:type];
+        if (path) {
+            scaledName = [name stringByAppendingString:[NSString stringWithFormat:@".%@", type]];
+            *stop = YES;
+        }
+    }];
+    return scaledName;
 }
 
 - (NSString *)xwAdd_stringByTrim {
@@ -400,6 +407,33 @@
 
 - (id)jsonValue {
     return [[self dataValue] jsonValue];
+}
+
+- (NSString *)firstCharUpperString{
+    if (self.length == 0) return self;
+    NSMutableString *string = [NSMutableString string];
+    [string appendString:[NSString stringWithFormat:@"%c", [self characterAtIndex:0]].uppercaseString];
+    if (self.length >= 2) [string appendString:[self substringFromIndex:1]];
+    return string;
+}
+
+
+#pragma mark - private methods
+
++ (NSArray *)_xwAdd_preferredScales {
+    static NSArray *scales;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        CGFloat screenScale = [UIScreen mainScreen].scale;
+        if (screenScale <= 1) {
+            scales = @[@1,@2,@3];
+        } else if (screenScale <= 2) {
+            scales = @[@2,@3,@1];
+        } else {
+            scales = @[@3,@2,@1];
+        }
+    });
+    return scales;
 }
 
 

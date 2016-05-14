@@ -11,7 +11,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSMutableDictionary (XWAdd)
 
-
 /**移除并返回对应key的value*/
 - (id)xwAdd_popObjectForKey:(id)aKey;
 /**移除并返回对应keys数组的values*/
@@ -24,5 +23,5 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)xwAdd_weakSetDictionary:(NSDictionary *)otherDictionary;
 /**将弱引用对象取出来*/
 - (id)xwAdd_weakObjectForKey:(id<NSCopying>)key;
-NS_ASSUME_NONNULL_END
 @end
+NS_ASSUME_NONNULL_END

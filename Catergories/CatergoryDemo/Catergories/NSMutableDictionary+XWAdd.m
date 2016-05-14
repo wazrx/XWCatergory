@@ -64,4 +64,8 @@ typedef id(^XWWeakReferencesBlock)(void);
     return dic;
 }
 
+- (void)test{
+    
+}
+
 @end
