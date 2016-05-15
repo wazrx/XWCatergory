@@ -28,6 +28,7 @@
 @property (nonatomic, strong) NSMutableString *s6;
 @property (nonatomic, copy) NSAttributedString *s7;
 @property (nonatomic, assign) int i;
+@property (nonatomic, weak) UITextField *field;
 @end
 
 @implementation ViewController
@@ -45,6 +46,10 @@ static id test(){
     test.center = self.view.center;
     test.bounds = CGRectMake(0, 0, 100, 100);
     [self.view addSubview:test];
+    UITextField *field = [UITextField new];
+    field.frame = CGRectMake(0, 0, 320, 100);
+    _field = field;
+    [self.view addSubview:field];
 //    [self testString];
 //    [self testTimer];
 //    [self testScaledImage];
@@ -55,13 +60,18 @@ static id test(){
 
 - (void)testKVO{
     [NSTimer xwAdd_scheduledCommonModesTimerWithTimeInterval:1 target:self selector:@selector(xwp_timerEvent) repeats:YES];
-//    [self addObserverBlockForKeyPath:@"s1" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
-//        NSLog(@"KVO = %@, %@, %@", obj, oldVal, newVal);
-//    }];
-//    return;
-    [self xwAdd_addObserverBlockForKeyPath:@"s1" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
+    [self addObserverBlockForKeyPath:@"s1" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
         NSLog(@"KVO = %@, %@, %@", obj, oldVal, newVal);
     }];
+//    return;
+//    [_field addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
+//    [self xwAdd_addObserverBlockForKeyPath:@"s1" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
+//        NSLog(@"KVO = %@, %@, %@", obj, oldVal, newVal);
+//    }];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
+    NSLog(@"kvo");
 }
 
 - (void)testRuntime{
@@ -97,7 +107,7 @@ static id test(){
 - (void)xwp_timerEvent{
 //    NSLog(@"timer调用中");
     _i++;
-    _s1 = [NSString stringWithFormat:@"%zd", _i];
+    self.s1 = [NSString stringWithFormat:@"%zd", _i];
     NSLog(@"%@", _s1);
 }
 
