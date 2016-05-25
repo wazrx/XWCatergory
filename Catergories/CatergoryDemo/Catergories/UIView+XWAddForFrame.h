@@ -8,37 +8,26 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, XWViewAttribute){
-    XWViewLeft,
-    XWViewRight,
-    XWViewTop,
-    XWViewBottom,
-    XWViewCenterX,
-    XWViewCenterY,
-//    XWViewCenter,
-//    XWViewSize,
-    XWViewWidth,
-    XWViewHeight,
-};
-
 @interface UIView (XWAddForFrame)
 
 
 #pragma mark - fast property
 
-@property (nonatomic, assign) CGFloat x;
-@property (nonatomic, assign) CGFloat y;
-@property (nonatomic, assign) CGFloat right;
-@property (nonatomic, assign) CGFloat bottom;
-@property (nonatomic, assign) CGFloat width;
-@property (nonatomic, assign) CGFloat height;
-@property (nonatomic, assign) CGFloat centerX;
-@property (nonatomic, assign) CGFloat centerY;
-@property (nonatomic, assign) CGPoint origin;
-@property (nonatomic, assign) CGSize  size;
-@property (nonatomic, assign) CGFloat bottomFromSuperView;
-@property (nonatomic, assign) CGFloat rightFromSuperView;
+@property (nonatomic, assign) CGFloat xw_left;
+@property (nonatomic, assign) CGFloat xw_top;
+@property (nonatomic, assign) CGFloat xw_right;
+@property (nonatomic, assign) CGFloat xw_bottom;
+@property (nonatomic, assign) CGFloat xw_width;
+@property (nonatomic, assign) CGFloat xw_height;
+@property (nonatomic, assign) CGFloat xw_centerX;
+@property (nonatomic, assign) CGFloat xw_centerY;
 
-- (void)xwAdd_set:(XWViewAttribute)attr withView:(UIView *)otherView attr:(XWViewAttribute)otherAttr offset:(CGFloat)offset;
+
+
+@property (nonatomic, assign) CGPoint xw_origin;
+@property (nonatomic, assign) CGPoint  xw_center;
+@property (nonatomic, assign) CGSize  xw_size;
+@property (nonatomic, assign) CGFloat xw_bottomFromSuperView;
+@property (nonatomic, assign) CGFloat xw_rightFromSuperView;
 
 @end

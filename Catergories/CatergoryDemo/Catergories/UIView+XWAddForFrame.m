@@ -13,275 +13,213 @@
 @implementation UIView (XWAddForFrame)
 
 
-- (CGFloat)x {
+- (CGFloat)xw_left {
     return self.frame.origin.x;
 }
 
-- (void)setX:(CGFloat)x {
-    if (self.x == x) return;
-    [self xwAdd_setAssociateValue:@(x) withKey:@"x"];
-    NSNumber *right = [self xwAdd_getAssociatedValueForKey:@"right"];
-    NSNumber *width = [self xwAdd_getAssociatedValueForKey:@"width"];
-    NSNumber *centerX = [self xwAdd_getAssociatedValueForKey:@"centerX"];
+- (void)setXw_left:(CGFloat)xw_left {
+    if (self.xw_left == xw_left) return;
+    [self xwAdd_setAssociateValue:@(xw_left) withKey:@"xw_left"];
+    NSNumber *xw_right = [self xwAdd_getAssociatedValueForKey:@"xw_right"];
+    NSNumber *xw_width = [self xwAdd_getAssociatedValueForKey:@"xw_width"];
+    NSNumber *xw_centerX = [self xwAdd_getAssociatedValueForKey:@"xw_centerX"];
     CGRect frame = self.frame;
-    if ((right && !width && !centerX) || (centerX && !width && !right)) {
-        frame.size.width = right.floatValue - x;
+    if (xw_right && !xw_width && !xw_centerX) {
+        frame.size.width = xw_right.floatValue - xw_left;
+    }else if (xw_centerX && !xw_width && !xw_right){
+        frame.size.width = (xw_centerX.floatValue - xw_left) * 2.0f;
     }
-    frame.origin.x = x;
+    frame.origin.x = xw_left;
     self.frame = frame;
 }
 
-- (CGFloat)right {
+- (CGFloat)xw_right {
     return self.frame.origin.x + self.frame.size.width;
 }
 
-- (void)setRight:(CGFloat)right {
-    if (self.right == right) return;
-    [self xwAdd_setAssociateValue:@(right) withKey:@"right"];
-    NSNumber *x = [self xwAdd_getAssociatedValueForKey:@"x"];
-    NSNumber *width = [self xwAdd_getAssociatedValueForKey:@"width"];
-    NSNumber *centerX = [self xwAdd_getAssociatedValueForKey:@"centerX"];
+- (void)setXw_right:(CGFloat)xw_right {
+    if (self.xw_right == xw_right) return;
+    [self xwAdd_setAssociateValue:@(xw_right) withKey:@"xw_right"];
+    NSNumber *xw_left = [self xwAdd_getAssociatedValueForKey:@"xw_left"];
+    NSNumber *xw_width = [self xwAdd_getAssociatedValueForKey:@"xw_width"];
+    NSNumber *xw_centerX = [self xwAdd_getAssociatedValueForKey:@"xw_centerX"];
     CGRect frame = self.frame;
-    if (centerX && !width && !x){
-        frame.size.width = (right - centerX.floatValue) * 2.0f;
-    }else if (x && !width && !centerX){
-        frame.size.width = right - x.floatValue;
+    if (xw_centerX && !xw_width && !xw_left){
+        frame.size.width = (xw_right - xw_centerX.floatValue) * 2.0f;
+    }else if (xw_left && !xw_width && !xw_centerX){
+        frame.size.width = xw_right - xw_left.floatValue;
     }
-    frame.origin.x = right - frame.size.width;
+    frame.origin.x = xw_right - frame.size.width;
     self.frame = frame;
 }
 
-- (CGFloat)width {
+- (CGFloat)xw_width {
     return self.frame.size.width;
 }
 
-- (void)setWidth:(CGFloat)width {
-    if (self.width == width) return;
-    [self xwAdd_setAssociateValue:@(width) withKey:@"width"];
-    NSNumber *x = [self xwAdd_getAssociatedValueForKey:@"x"];
-    NSNumber *right = [self xwAdd_getAssociatedValueForKey:@"right"];
-    NSNumber *centerX = [self xwAdd_getAssociatedValueForKey:@"centerX"];
+- (void)setXw_width:(CGFloat)xw_width {
+    if (self.xw_width == xw_width) return;
+    [self xwAdd_setAssociateValue:@(xw_width) withKey:@"xw_width"];
+    NSNumber *xw_left = [self xwAdd_getAssociatedValueForKey:@"xw_left"];
+    NSNumber *xw_right = [self xwAdd_getAssociatedValueForKey:@"xw_right"];
+    NSNumber *xw_centerX = [self xwAdd_getAssociatedValueForKey:@"xw_centerX"];
     CGRect frame = self.frame;
-    if (!x && !right && centerX) {
-        frame.origin.x = centerX.floatValue - width / 2.0f;
-    }else if (!x && !centerX && right){
-        frame.origin.x = right.floatValue - width;
+    if (!xw_left && !xw_right && xw_centerX) {
+        frame.origin.x = xw_centerX.floatValue - xw_width / 2.0f;
+    }else if (!xw_left && !xw_centerX && xw_right){
+        frame.origin.x = xw_right.floatValue - xw_width;
     }
-    frame.size.width = width;
+    frame.size.width = xw_width;
     self.frame = frame;
 }
 
-- (CGFloat)centerX {
+- (CGFloat)xw_centerX {
     return self.center.x;
 }
 
-- (void)setCenterX:(CGFloat)centerX {
-    if (self.centerX == centerX) return;
-    [self xwAdd_setAssociateValue:@(centerX) withKey:@"centerX"];
-    NSNumber *x = [self xwAdd_getAssociatedValueForKey:@"x"];
-    NSNumber *right = [self xwAdd_getAssociatedValueForKey:@"right"];
-    NSNumber *width = [self xwAdd_getAssociatedValueForKey:@"width"];
+- (void)setXw_centerX:(CGFloat)xw_centerX {
+    if (self.xw_centerX == xw_centerX) return;
+    [self xwAdd_setAssociateValue:@(xw_centerX) withKey:@"xw_centerX"];
+    NSNumber *xw_left = [self xwAdd_getAssociatedValueForKey:@"xw_left"];
+    NSNumber *xw_right = [self xwAdd_getAssociatedValueForKey:@"xw_right"];
+    NSNumber *xw_width = [self xwAdd_getAssociatedValueForKey:@"xw_width"];
     CGRect frame = self.frame;
-    if (right && !x && !width) {
-        frame.size.width = (right.floatValue - centerX) * 2.0f;
-    }else if (x && !right && !width){
-        frame.size.width = (centerX - x.floatValue) * 2.0f;
+    if (xw_right && !xw_left && !xw_width) {
+        frame.size.width = (xw_right.floatValue - xw_centerX) * 2.0f;
+    }else if (xw_left && !xw_right && !xw_width){
+        frame.size.width = (xw_centerX - xw_left.floatValue) * 2.0f;
     }
     self.frame = frame;
-    self.center = CGPointMake(centerX, self.center.y);
+    self.center = CGPointMake(xw_centerX, self.center.y);
     
 }
 
 
 
-- (CGFloat)y {
+- (CGFloat)xw_top {
     return self.frame.origin.y;
 }
 
-- (void)setY:(CGFloat)y {
-    if (self.y == y) return;
-    [self xwAdd_setAssociateValue:@(y) withKey:@"y"];
-    NSNumber *bottom = [self xwAdd_getAssociatedValueForKey:@"bottom"];
-    NSNumber *height = [self xwAdd_getAssociatedValueForKey:@"height"];
-    NSNumber *centerY = [self xwAdd_getAssociatedValueForKey:@"centerY"];
+- (void)setXw_top:(CGFloat)xw_top {
+    if (self.xw_top == xw_top) return;
+    [self xwAdd_setAssociateValue:@(xw_top) withKey:@"xw_top"];
+    NSNumber *xw_bottom = [self xwAdd_getAssociatedValueForKey:@"xw_bottom"];
+    NSNumber *xw_height = [self xwAdd_getAssociatedValueForKey:@"xw_height"];
+    NSNumber *xw_centerY = [self xwAdd_getAssociatedValueForKey:@"xw_centerY"];
     CGRect frame = self.frame;
-    if ((bottom && !height && !centerY) || (centerY && !height && !bottom)) {
-        frame.size.height = bottom.floatValue - y;
+    if (xw_bottom && !xw_height && !xw_centerY) {
+        frame.size.height = xw_bottom.floatValue - xw_top;
+    }else if (xw_centerY && !xw_height && !xw_bottom){
+        frame.size.height = (xw_centerY.floatValue - xw_top) * 2.0f;
     }
-    frame.origin.y = y;
+    frame.origin.y = xw_top;
     self.frame = frame;
 }
 
-- (CGFloat)bottom {
+- (CGFloat)xw_bottom {
     return self.frame.origin.y + self.frame.size.height;
 }
 
-- (void)setBottom:(CGFloat)bottom {
-    if (self.bottom == bottom) return;
-    [self xwAdd_setAssociateValue:@(bottom) withKey:@"bottom"];
-    NSNumber *y = [self xwAdd_getAssociatedValueForKey:@"y"];
-    NSNumber *height = [self xwAdd_getAssociatedValueForKey:@"height"];
-    NSNumber *centerY = [self xwAdd_getAssociatedValueForKey:@"centerY"];
+- (void)setXw_bottom:(CGFloat)xw_bottom {
+    if (self.xw_bottom == xw_bottom) return;
+    [self xwAdd_setAssociateValue:@(xw_bottom) withKey:@"xw_bottom"];
+    NSNumber *xw_top = [self xwAdd_getAssociatedValueForKey:@"xw_top"];
+    NSNumber *xw_height = [self xwAdd_getAssociatedValueForKey:@"xw_height"];
+    NSNumber *xw_centerY = [self xwAdd_getAssociatedValueForKey:@"xw_centerY"];
     CGRect frame = self.frame;
-    if (centerY && !height && !y){
-        frame.size.height = (bottom - centerY.floatValue) * 2.0f;
-    }else if (y && !height && !centerY){
-        frame.size.height = bottom - y.floatValue;
+    if (xw_centerY && !xw_height && !xw_top){
+        frame.size.height = (xw_bottom - xw_centerY.floatValue) * 2.0f;
+    }else if (xw_top && !xw_height && !xw_centerY){
+        frame.size.height = xw_bottom - xw_top.floatValue;
     }
-    frame.origin.y = bottom - frame.size.height;
+    frame.origin.y = xw_bottom - frame.size.height;
     self.frame = frame;
 }
 
-- (CGFloat)height {
+- (CGFloat)xw_height {
     return self.frame.size.height;
 }
 
-- (void)setHeight:(CGFloat)height {
-    if (self.height == height) return;
-    [self xwAdd_setAssociateValue:@(height) withKey:@"height"];
-    NSNumber *y = [self xwAdd_getAssociatedValueForKey:@"y"];
-    NSNumber *bottom = [self xwAdd_getAssociatedValueForKey:@"bottom"];
-    NSNumber *centerY = [self xwAdd_getAssociatedValueForKey:@"centerY"];
+- (void)setXw_height:(CGFloat)xw_height {
+    if (self.xw_height == xw_height) return;
+    [self xwAdd_setAssociateValue:@(xw_height) withKey:@"xw_height"];
+    NSNumber *xw_top = [self xwAdd_getAssociatedValueForKey:@"xw_top"];
+    NSNumber *xw_bottom = [self xwAdd_getAssociatedValueForKey:@"xw_bottom"];
+    NSNumber *xw_centerY = [self xwAdd_getAssociatedValueForKey:@"xw_centerY"];
     CGRect frame = self.frame;
-    if (!y && !bottom && centerY) {
-        frame.origin.y = centerY.floatValue - height / 2.0f;
-    }else if (!y && !centerY && bottom){
-        frame.origin.y = bottom.floatValue - height;
+    if (!xw_top && !xw_bottom && xw_centerY) {
+        frame.origin.y = xw_centerY.floatValue - xw_height / 2.0f;
+    }else if (!xw_top && !xw_centerY && xw_bottom){
+        frame.origin.y = xw_bottom.floatValue - xw_height;
     }
-    frame.size.height = height;
+    frame.size.height = xw_height;
     self.frame = frame;
 }
 
-- (CGFloat)centerY {
+- (CGFloat)xw_centerY {
     return self.center.y;
 }
 
-- (void)setCenterY:(CGFloat)centerY {
-    if (self.centerY == centerY) return;
-    [self xwAdd_setAssociateValue:@(centerY) withKey:@"centerY"];
-    NSNumber *y = [self xwAdd_getAssociatedValueForKey:@"y"];
-    NSNumber *bottom = [self xwAdd_getAssociatedValueForKey:@"bottom"];
-    NSNumber *height = [self xwAdd_getAssociatedValueForKey:@"height"];
+- (void)setXw_centerY:(CGFloat)xw_centerY {
+    if (self.xw_centerY == xw_centerY) return;
+    [self xwAdd_setAssociateValue:@(xw_centerY) withKey:@"xw_centerY"];
+    NSNumber *xw_top = [self xwAdd_getAssociatedValueForKey:@"xw_top"];
+    NSNumber *xw_bottom = [self xwAdd_getAssociatedValueForKey:@"xw_bottom"];
+    NSNumber *xw_height = [self xwAdd_getAssociatedValueForKey:@"xw_height"];
     CGRect frame = self.frame;
-    if (bottom && !y && !height) {
-        frame.size.height = (bottom.floatValue - centerY) * 2.0f;
-    }else if (y && !bottom && !height){
-        frame.size.height = (centerY - y.floatValue) * 2.0f;
+    if (xw_bottom && !xw_top && !xw_height) {
+        frame.size.height = (xw_bottom.floatValue - xw_centerY) * 2.0f;
+    }else if (xw_top && !xw_bottom && !xw_height){
+        frame.size.height = (xw_centerY - xw_top.floatValue) * 2.0f;
     }
     self.frame = frame;
-    self.center = CGPointMake(self.center.x, centerY);
+    self.center = CGPointMake(self.center.x, xw_centerY);
 }
 
-- (CGPoint)origin {
+- (CGPoint)xw_origin {
     return self.frame.origin;
 }
 
-- (void)setOrigin:(CGPoint)origin {
-    CGRect frame = self.frame;
-    frame.origin = origin;
-    self.frame = frame;
+- (void)setXw_origin:(CGPoint)origin {
+    [self setXw_left:origin.x];
+    [self setXw_top:origin.y];
 }
 
-- (CGSize)size {
+- (CGSize)xw_size {
     return self.frame.size;
 }
 
-- (void)setSize:(CGSize)size {
-    CGRect frame = self.frame;
-    frame.size = size;
-    self.frame = frame;
+- (void)setXw_size:(CGSize)size {
+    [self setXw_width:size.width];
+    [self setXw_height:size.height];
 }
 
-- (CGFloat)rightFromSuperView{
+- (CGPoint)xw_center{
+    return self.center;
+}
+
+- (void)setXw_center:(CGPoint)xw_center{
+    [self setXw_centerX:xw_center.x];
+    [self setXw_centerY:xw_center.y];
+}
+
+- (CGFloat)xw_rightFromSuperView{
     if (!self.superview) return 0;
-    return self.superview.width - self.right;
+    return self.superview.xw_width - self.xw_right;
 }
 
-- (void)setRightFromSuperView:(CGFloat)rightFromSuperView{
+- (void)setXw_rightFromSuperView:(CGFloat)xw_rightFromSuperView{
     if (!self.superview) return;
-    self.y = self.superview.width - self.width - rightFromSuperView;
+    self.xw_left = self.superview.xw_width - self.xw_width - xw_rightFromSuperView;
 }
 
-- (CGFloat)bottomFromSuperView{
+- (CGFloat)xw_bottomFromSuperView{
     if (!self.superview) return 0;
-    return self.superview.height - self.bottom;
+    return self.superview.xw_height - self.xw_bottom;
 }
 
-- (void)setBottomFromSuperView:(CGFloat)bottomFromSuperView{
+- (void)setXw_bottomFromSuperView:(CGFloat)xw_bottomFromSuperView{
     if (!self.superview) return;
-    self.y = self.superview.height - self.height - bottomFromSuperView;
-}
-
-
-
-- (void)xwAdd_set:(XWViewAttribute)attr withView:(UIView *)otherView attr:(XWViewAttribute)otherAttr offset:(CGFloat)offset {
-    CGFloat value = [self _xwAdd_getValueInView:otherView attr:otherAttr];
-    [self _xwAdd_setValue:value withAttr:attr offset:offset];
-}
-
-- (CGFloat)_xwAdd_getValueInView:(UIView *)view attr:(XWViewAttribute)attr{
-    switch (attr) {
-        case XWViewLeft: {
-            return view.x;
-        }
-        case XWViewRight: {
-            return view.right;
-        }
-        case XWViewTop: {
-            return view.y;
-        }
-        case XWViewBottom: {
-            return view.bottom;
-        }
-        case XWViewCenterX: {
-            return view.centerX;
-        }
-        case XWViewCenterY: {
-            return view.centerY;
-        }
-        case XWViewWidth: {
-            return view.width;
-        }
-        case XWViewHeight: {
-            return view.height;
-        }
-    }
-}
-
-- (void)_xwAdd_setValue:(CGFloat)value withAttr:(XWViewAttribute)attr offset:(CGFloat)offset{
-    switch (attr) {
-        case XWViewLeft: {
-            self.x = value + offset;
-            break;
-        }
-        case XWViewRight: {
-            self.right = value + offset;
-            break;
-        }
-        case XWViewTop: {
-            self.y = value + offset;
-            break;
-        }
-        case XWViewBottom: {
-            self.bottom = value + offset;
-            break;
-        }
-        case XWViewCenterX: {
-            self.centerX = value + offset;
-            break;
-        }
-        case XWViewCenterY: {
-            self.centerY = value + offset;
-            break;
-        }
-        case XWViewWidth: {
-            self.width = value + offset;
-            break;
-        }
-        case XWViewHeight: {
-            self.height = value + offset;
-            break;
-        }
-    }
+    self.xw_top = self.superview.xw_height - self.xw_height - xw_bottomFromSuperView;
 }
 @end
