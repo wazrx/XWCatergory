@@ -10,6 +10,6 @@
 
 @interface UICollectionViewFlowLayout (XWAdd)
 
-@property (nonatomic, assign) BOOL xwAdd_fullItem;
+@property (nonatomic, assign) BOOL fullItem;
 
 @end

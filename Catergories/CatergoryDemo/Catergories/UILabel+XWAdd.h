@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UILabel (XWAdd)
-
 /**给切换text添加动画*/
-@property (nonatomic, assign) BOOL textAnimation;
+@property (nonatomic, assign) BOOL textChangeWithAnimaiton;
 
 @end

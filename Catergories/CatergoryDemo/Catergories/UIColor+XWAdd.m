@@ -440,4 +440,12 @@ void XW_HSL2HSB(CGFloat h, CGFloat s, CGFloat l,
     return from + (to - from) * ratio;
 }
 
++ (UIColor *)xwAdd_randomColor {
+    int r = arc4random() % 255;
+    int g = arc4random() % 255;
+    int b = arc4random() % 255;
+    return [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0];
+	
+}
+
 @end

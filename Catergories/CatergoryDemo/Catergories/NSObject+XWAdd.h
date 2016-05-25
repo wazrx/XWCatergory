@@ -37,6 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSArray *)xwAdd_getAllPropertyNames;
 
++ (NSArray *)xwAdd_getAllIvarNames;
+
 + (NSArray *)xwAdd_getAllInstanceMethodsNames;
 
 + (NSArray *)xwAdd_getAllClassMethodsNames;

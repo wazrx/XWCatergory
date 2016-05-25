@@ -12,10 +12,15 @@
 #import "NSString+XWAdd.h"
 #import "NSTimer+XWAdd.h"
 #import "NSObject+XWAdd.h"
+#import "UIImage+XWAdd.h"
+#import "UIAlertView+XWAdd.h"
 #import "NSObject+YYAddForKVO.h"
+#import "UIView+XWAddForFrame.h"
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
 #import <objc/runtime.h>
 
-@interface ViewController ()
+@interface ViewController ()<ABPeoplePickerNavigationControllerDelegate>
 @property (nonatomic, strong) NSMutableDictionary *dict;
 @property (nonatomic, copy) dispatch_block_t test;
 @property (nonatomic, weak) UIView *testView;
@@ -29,6 +34,7 @@
 @property (nonatomic, copy) NSAttributedString *s7;
 @property (nonatomic, assign) int i;
 @property (nonatomic, weak) UITextField *field;
+@property (nonatomic, strong) ABPeoplePickerNavigationController *sbController;
 @end
 
 @implementation ViewController
@@ -38,24 +44,76 @@ static id test(){
 }
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
-    _vc = [ViewController new];
-    UIView *test = [UIView new];
-    _testView = test;
-    test.backgroundColor = [UIColor redColor];
-    test.center = self.view.center;
-    test.bounds = CGRectMake(0, 0, 100, 100);
-    [self.view addSubview:test];
-    UITextField *field = [UITextField new];
-    field.frame = CGRectMake(0, 0, 320, 100);
-    _field = field;
-    [self.view addSubview:field];
+//    _vc = [ViewController new];
+//    UIView *test = [UIView new];
+//    _testView = test;
+//    test.backgroundColor = [UIColor redColor];
+//    test.center = self.view.center;
+//    test.bounds = CGRectMake(0, 0, 100, 100);
+//    [self.view addSubview:test];
+//    UITextField *field = [UITextField new];
+//    field.frame = CGRectMake(0, 0, 320, 100);
+//    _field = field;
+//    [self.view addSubview:field];
 //    [self testString];
 //    [self testTimer];
-//    [self testScaledImage];
+//    [self testAB];
+//    [self testAlert];
 //    [self testRuntime];
-    [self testKVO];
+//    [self testKVO];
+    [self testFrame];
     
+}
+
+- (void)testFrame{
+    UIView *v1 = [UIView new];
+    v1.backgroundColor = [UIColor redColor];
+    [self.view addSubview:v1];
+    v1.frame = CGRectMake(10, 10, 100, 100);
+//    v1.width = 100;
+    v1.centerX = 50;
+//    v1.y = 100;
+//    v1.height = 50;
+    UIView *v2 = [UIView new];
+    v2.backgroundColor = [UIColor greenColor];
+    v2.centerX = v1.centerX;
+    v2.width = v1.width / 2.0f;
+    v2.y = v1.bottom + 50;
+    v2.height = v1.height * 2.0f;
+    [self.view addSubview:v2];
+}
+
+- (void)xwp_setAbsolutelyFrame{
+    
+}
+
+- (void)xwp_setRelativeFrame{
+    
+}
+
+- (void)testAlert{
+    [UIAlertView xwAdd_showAlertViewWith:@"1" message:@"2" leftButtonTitle:@"1" leftButtonClickedConfig:^{
+        NSLog(@"1");
+    } rightButtonTitle:@"2" rightButtonClickedConfig:^{
+        NSLog(@"2");
+    }];
+}
+
+- (void)testAB{
+    self.sbController = [[ABPeoplePickerNavigationController alloc] init];
+    _sbController.peoplePickerDelegate = self;
+    [self presentViewController:_sbController animated:YES completion:nil];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSLog(@"%@", [ABPeoplePickerNavigationController xwAdd_getAllIvarNames]);
+        [[ABPeoplePickerNavigationController xwAdd_getAllIvarNames] enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj isEqualToString:@"_addressBook"]) {
+                NSLog(@"%@", [_sbController valueForKey:obj]);
+                return ;
+            }
+        }];
+    });
 }
 
 - (void)testKVO{
@@ -83,10 +141,11 @@ static id test(){
 - (void)testScaledImage{
     NSString *name = [@"wazrx" xwAdd_scaledNameWithType:@"jpg"];
     UIImageView *imgView = [UIImageView new];
-    imgView.image = [UIImage imageNamed:name];
+    UIImage *img = [[UIImage imageNamed:name] xwAdd_imageByRoundCornerRadius:100];
+    imgView.image = img;
     [self.view addSubview:imgView];
     imgView.center = self.view.center;
-    imgView.bounds = CGRectMake(0, 0, 100, 100);
+    imgView.bounds = CGRectMake(0, 0, 200, 200);
 }
 
 - (void)testString{

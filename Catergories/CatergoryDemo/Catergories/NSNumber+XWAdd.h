@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSNumber (XWAdd)
 
 /**将NSString数字字符串转成NSNumber，如果满足规则返回想要值，不满足返回nil*/
-+ (NSNumber *)xwAdd_numberWithString:(NSString *)string;
++ (nullable NSNumber *)xwAdd_numberWithString:(NSString *)string;
 
 @end
 

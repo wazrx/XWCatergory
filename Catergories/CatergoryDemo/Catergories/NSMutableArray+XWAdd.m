@@ -68,4 +68,11 @@
         [self exchangeObjectAtIndex:i withObjectAtIndex:(count - (i + 1))];
     }
 }
+
+- (void)xwAdd_random {
+    for (NSUInteger i = self.count; i > 1; i--) {
+        [self exchangeObjectAtIndex:(i - 1)
+                  withObjectAtIndex:arc4random_uniform((u_int32_t)i)];
+    }
+}
 @end

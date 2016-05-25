@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^uideviceBlock)(BOOL success);
+NS_ASSUME_NONNULL_BEGIN
 
 @interface UIDevice (XWAdd)
+
+#pragma mark - device info (设备信息相关)
 
 @property (nonatomic,readonly) NSString *idfa;
 
@@ -18,11 +20,16 @@ typedef void(^uideviceBlock)(BOOL success);
 
 @property (nonatomic, readonly) BOOL isPad;
 
+@property (nonatomic, readonly) BOOL isSimulator;
+
 @property (nonatomic, readonly) BOOL hasCamera;
 
 @property (nonatomic, readonly) BOOL canMakePhoneCalls NS_EXTENSION_UNAVAILABLE_IOS("");
 
 @property (nonatomic, readonly) NSUInteger cpuNumber;
+
+//8.0,9.1
+@property (nonatomic, readonly) double systemVersionValue;
 
 //"iPhone9,2"
 @property (nonatomic, readonly) NSString *modelInfo;
@@ -30,10 +37,13 @@ typedef void(^uideviceBlock)(BOOL success);
 //"iPhone 5s"
 @property (nonatomic, readonly) NSString *modelInfoName;
 
-//@"192.168.1.111"
+//"中国移动"
+@property (nonatomic, readonly) NSString *moblieOperatorName;
+
+//@"192.168.1.111，wifi的IP"
 @property (nonatomic, readonly) NSString *ipAddressWIFI;
 
-//@"10.2.2.222"
+//@"10.2.2.222,蜂窝移动网络IP"
 @property (nonatomic, readonly) NSString *ipAddressCell;
 
 @property (nonatomic, readonly) int64_t diskSpace;
@@ -44,28 +54,26 @@ typedef void(^uideviceBlock)(BOOL success);
 
 @property (nonatomic, readonly) int64_t memoryTotal;
 
-+ (NSDictionary *)xw_getAllDeviceInfo;
+#pragma mark - check Allow (判断系统行为是否允许，通知定位等)
 
-+ (BOOL)xwAdd_isAllowedNotification;
+@property (nonatomic, readonly) BOOL allowNotification;
 
-+ (BOOL)xwAdd_isAllowedLocation;
+@property (nonatomic, readonly) BOOL allowLocation;
 
-/**7.0/8.0*/
-+ (CGFloat)xwAdd_getCurrentSystemVersion;
+#pragma mark - open setting (打开系统设置界面)
 
-/**1.0.0*/
-+ (NSString *)xwAdd_getAppVersion;
+/**
+ *  打开系统通知界面, iOS7 需要添加一个名为prefs的URL Schemes
+ *
+ *  @param completeBlock 回到app后的回调
+ */
++ (void)xwAdd_openSystemNotificationSettingPageWithCompleteHandle:(void(^)(BOOL isAllowed))completeBlock;
 
-+ (void)xwAdd_openSystemNotificationSettingPageWithCompleteHandle:(uideviceBlock)completeBlock;
-
+/**打开定位设置界面*/
 + (void)xwAdd_openSystemAddressSettingPage;
 
-+ (NSString *)xwAdd_getModelInfo;
-
-+ (NSString *)xwAdd_getIPAddress;
-
-+ (NSString *)xwAdd_getIdfaString;
-
-+ (NSString *)xwAdd_getMoblieOperatorName;
++ (NSDictionary *)xw_getAllDeviceInfo;
 
 @end
+
+NS_ASSUME_NONNULL_END

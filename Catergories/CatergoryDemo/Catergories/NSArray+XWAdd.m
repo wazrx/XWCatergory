@@ -41,4 +41,13 @@
     }
     return nil;
 }
+
+- (NSArray *)xwAdd_arrayAfterRandom {
+    NSMutableArray *temp = [NSMutableArray arrayWithArray:self];
+    for (NSUInteger i = temp.count; i > 1; i--) {
+        [temp exchangeObjectAtIndex:(i - 1)
+                  withObjectAtIndex:arc4random_uniform((u_int32_t)i)];
+    }
+    return temp.copy;
+}
 @end

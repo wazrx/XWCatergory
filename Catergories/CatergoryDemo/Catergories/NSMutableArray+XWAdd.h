@@ -16,15 +16,17 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)xwAdd_removeLastObject;
 
 /**移除并返回第一个元素*/
-- (id)xwAdd_popFirstObject;
+- (nullable id)xwAdd_popFirstObject;
 /**移除并返回最后一个元素*/
-- (id)xwAdd_popLastObject;
+- (nullable id)xwAdd_popLastObject;
 /**移除并返回指定元素*/
-- (id)xwAdd_popObjectAtIndexPath:(NSUInteger)index;
+- (nullable id)xwAdd_popObjectAtIndexPath:(NSUInteger)index;
 /**插入数组*/
 - (void)xwAdd_insertObjects:(NSArray *)objects atIndex:(NSUInteger)index;
 /**反转数组*/
 - (void)xwAdd_reverse;
+/**随机整理数组*/
+- (void)xwAdd_random;
 
 @end
 

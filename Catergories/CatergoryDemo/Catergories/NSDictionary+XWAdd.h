@@ -13,10 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSDictionary (XWAdd)
 
 - (BOOL)xwAdd_containsObjectForKey:(id)key;
-- (NSString *)xwAdd_jsonStringEncoded;
-- (NSString *)xwAdd_jsonPrettyStringEncoded;
+- (nullable NSString *)xwAdd_jsonStringEncoded;
+- (nullable NSString *)xwAdd_jsonPrettyStringEncoded;
 /**根据keys数组返回对应的字典*/
-- (NSDictionary *)xwAdd_entriesForKeys:(NSArray *)keys;
+- (nullable NSDictionary *)xwAdd_entriesForKeys:(NSArray *)keys;
 
 @end
 

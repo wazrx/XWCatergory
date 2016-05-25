@@ -8,12 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^alertViewXWAddBlock)();
+@interface UIAlertView (XWAdd)
 
-@interface UIAlertView (XWAdd)<UIAlertViewDelegate>
++(void)xwAdd_showAlertViewWith:(NSString *)title message:(NSString *)message leftButtonTitle:(NSString *)leftButtonTitle leftButtonClickedConfig:(dispatch_block_t)leftBlock rightButtonTitle:(NSString *)rightButtonTitle rightButtonClickedConfig:(dispatch_block_t)rightBlock;
 
-+(void)xwAdd_showAlertViewWith:(NSString *)title message:(NSString *)message leftButtonTitle:(NSString *)leftButtonTitle leftButtonClickedConfig:(alertViewXWAddBlock)leftBlock rightButtonTitle:(NSString *)rightButtonTitle rightButtonClickedConfig:(alertViewXWAddBlock)rightBlock;
-
-+(void)xwAdd_showOneAlertViewWith:(NSString *)title message:(NSString *)message buttonTitle:(NSString *)buttonTitle buttonClickedConfig:(alertViewXWAddBlock)block;
++(void)xwAdd_showOneAlertViewWith:(NSString *)title message:(NSString *)message buttonTitle:(NSString *)buttonTitle buttonClickedConfig:(dispatch_block_t)block;
 
 @end

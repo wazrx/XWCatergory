@@ -9,6 +9,7 @@
 #import "NSObject+XWAdd.h"
 #import "NSString+XWAdd.h"
 #import <objc/runtime.h>
+#import <AddressBookUI/AddressBookUI.h>
 
 @interface _XWNSObjectKVOBlockTarget : NSObject
 
@@ -94,6 +95,19 @@
     free(propertys);
     return allNames.copy;
 	
+}
+
++ (NSArray *)xwAdd_getAllIvarNames{
+    NSMutableArray *allNames = @[].mutableCopy;
+    unsigned int ivarCount = 0;
+    Ivar *ivars = class_copyIvarList(self, &ivarCount);
+    for (int i = 0; i < ivarCount; i ++) {
+        Ivar ivar = ivars[i];
+        const char * ivarName = ivar_getName(ivar);
+        [allNames addObject:[NSString stringWithUTF8String:ivarName]];
+    }
+    free(ivars);
+    return allNames.copy;
 }
 
 + (NSArray *)xwAdd_getAllInstanceMethodsNames {

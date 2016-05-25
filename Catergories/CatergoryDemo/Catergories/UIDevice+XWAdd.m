@@ -14,8 +14,7 @@
 #include <ifaddrs.h>
 #import <AdSupport/AdSupport.h>
 #import <CoreLocation/CoreLocation.h>
-
-static uideviceBlock notificationSettingCompleteBlock;
+#import <objc/runtime.h>
 
 @implementation UIDevice (XWAdd)
 
@@ -240,12 +239,26 @@ static uideviceBlock notificationSettingCompleteBlock;
     return mem;
 }
 
-+ (CGFloat)xwAdd_getCurrentSystemVersion{
-    return [[UIDevice currentDevice].systemVersion doubleValue];
+- (double)systemVersionValue{
+    static double version = 0.0f;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        version = [[UIDevice currentDevice].systemVersion doubleValue];
+    });
+    return version;
 }
 
 - (NSUInteger)cpuNumber {
     return [self getSysInfo:3];
+}
+
+- (BOOL)isSimulator {
+    static dispatch_once_t one;
+    static BOOL simu;
+    dispatch_once(&one, ^{
+        simu = NSNotFound != [[self model] rangeOfString:@"Simulator"].location;
+    });
+    return simu;
 }
 
 - (NSUInteger)getSysInfo:(uint)typeSpecifier
@@ -258,7 +271,7 @@ static uideviceBlock notificationSettingCompleteBlock;
 }
 
 + (NSDictionary *)xw_getAllDeviceInfo{
-    UIDevice *device = [UIDevice new];
+    UIDevice *device = [UIDevice currentDevice];
     return @{@"systemVersion" : [NSString stringWithFormat:@"%@", device.systemVersion],
              @"idfa" : device.idfa,
              @"uuid" : device.uuid,
@@ -276,52 +289,8 @@ static uideviceBlock notificationSettingCompleteBlock;
              @"cpuNumber" :[NSString stringWithFormat:@"%zd", device.cpuNumber],};
 }
 
-
-+ (BOOL)xwAdd_isAllowedNotification{
-    if ([self xwAdd_getCurrentSystemVersion] >= 8.0) {
-        UIUserNotificationSettings *setting = [[UIApplication sharedApplication] currentUserNotificationSettings];
-        if (UIUserNotificationTypeNone != setting.types) {
-            return YES;
-        }
-    }else{
-        UIRemoteNotificationType type = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
-        if (UIRemoteNotificationTypeNone != type) {
-            return YES;
-        }
-    }
-    return NO;
-}
-
-+ (BOOL)xwAdd_isAllowedLocation{
-    return [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways;
-}
-
-+ (void)xwAdd_openSystemNotificationSettingPageWithCompleteHandle:(uideviceBlock)completeBlock{
-    notificationSettingCompleteBlock = completeBlock;
-    if ([self xwAdd_getCurrentSystemVersion] >= 8.0 ) {
-        NSURL*url =[NSURL URLWithString:UIApplicationOpenSettingsURLString];
-        if([[UIApplication sharedApplication] canOpenURL:url]){
-            [[UIApplication sharedApplication] openURL:url];
-        }
-    }else{
-        NSURL*url=[NSURL URLWithString:@"prefs:root=NOTIFICATIONS_ID"];
-        [[UIApplication sharedApplication] openURL:url];
-    }
-    if (completeBlock) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(xwp_setNotifcationAllowed) name:UIApplicationWillEnterForegroundNotification object:nil];
-    }
-}
-
-+ (void)xwp_setNotifcationAllowed{
-    if (notificationSettingCompleteBlock) {
-        notificationSettingCompleteBlock ([self xwAdd_isAllowedNotification]);
-    }
-    notificationSettingCompleteBlock = nil;
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 + (void)xwAdd_openSystemAddressSettingPage{
-    if ([self xwAdd_getCurrentSystemVersion] >= 8.0 ) {
+    if ([UIDevice currentDevice].systemVersionValue >= 8.0 ) {
         NSURL*url =[NSURL URLWithString:UIApplicationOpenSettingsURLString];
         if([[UIApplication sharedApplication] canOpenURL:url]){
             [[UIApplication sharedApplication] openURL:url];
@@ -331,49 +300,7 @@ static uideviceBlock notificationSettingCompleteBlock;
         [[UIApplication sharedApplication] openURL:url];
     }
 }
-
-+ (NSString *)xwAdd_getModelInfo{
-    return[UIDevice currentDevice].model;
-}
-
-+ (NSString *)xwAdd_getIPAddress{
-    NSString *address = @"error";
-    struct ifaddrs *interfaces = NULL;
-    struct ifaddrs *temp_addr = NULL;
-    int success = 0;
-    // retrieve the current interfaces - returns 0 on success
-    success = getifaddrs(&interfaces);
-    if (success == 0) {
-        // Loop through linked list of interfaces
-        temp_addr = interfaces;
-        while(temp_addr != NULL) {
-            if(temp_addr->ifa_addr->sa_family == AF_INET) {
-                // Check if interface is en0 which is the wifi connection on the iPhone
-                if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) {
-                    // Get NSString from C String
-                    address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
-                    
-                }
-                
-            }
-            
-            temp_addr = temp_addr->ifa_next;
-        }
-    }
-    // Free memory
-    freeifaddrs(interfaces);
-    return address;
-}
-
-+ (NSString *)xwAdd_getAppVersion{
-    return [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
-}
-
-+ (NSString *)xwAdd_getIdfaString{
-    return [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-}
-
-+ (NSString *)xwAdd_getMoblieOperatorName {
+- (NSString *)moblieOperatorName {
     NSString * MOBILE = @"^1(3[0-9]|5[0-35-9]|8[025-9])\\d{8}$";
     
     NSString * CM = @"^1(34[0-8]|(3[5-9]|5[017-9]|8[278])\\d)\\d{7}$";
@@ -400,6 +327,52 @@ static uideviceBlock notificationSettingCompleteBlock;
         return @"中国移动";
     }
     return @"其它号码";
+}
+
+- (BOOL)allowLocation{
+    return [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways;
+}
+
+- (BOOL)allowNotification{
+    if ([UIDevice currentDevice].systemVersionValue >= 8.0) {
+        UIUserNotificationSettings *setting = [[UIApplication sharedApplication] currentUserNotificationSettings];
+        if (UIUserNotificationTypeNone != setting.types) {
+            return YES;
+        }
+    }else{
+        UIRemoteNotificationType type = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
+        if (UIRemoteNotificationTypeNone != type) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
++ (void)xwAdd_openSystemNotificationSettingPageWithCompleteHandle:(void(^)(BOOL isAllowed))completeBlock {
+    if ([UIDevice currentDevice].systemVersionValue >= 8.0 ) {
+        NSURL*url =[NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        if([[UIApplication sharedApplication] canOpenURL:url]){
+            [[UIApplication sharedApplication] openURL:url];
+        }
+    }else{
+        NSURL*url=[NSURL URLWithString:@"prefs:root=NOTIFICATIONS_ID"];
+        [[UIApplication sharedApplication] openURL:url];
+    }
+    if (!completeBlock) {
+        return;
+    }
+    objc_setAssociatedObject(self, "openSystemNotificationSettingPage", completeBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_xw_setNotifcationAllowed) name:UIApplicationWillEnterForegroundNotification object:nil];
+}
+
+#pragma mark - private methods
+
++ (void)_xw_setNotifcationAllowed{
+    void(^completeBlock)(BOOL isAllowed) = objc_getAssociatedObject(self, "openSystemNotificationSettingPage");
+    if (!completeBlock) return;
+    completeBlock ([UIDevice currentDevice].allowLocation);
+    completeBlock = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 @end

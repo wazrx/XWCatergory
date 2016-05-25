@@ -10,6 +10,6 @@
 
 @interface UIImageView (XWAdd)
 /**给切换image添加动画*/
-@property (nonatomic, assign) BOOL imageAnimation;
+@property (nonatomic, assign) BOOL imageChangeWithAnimaiton;
 
 @end

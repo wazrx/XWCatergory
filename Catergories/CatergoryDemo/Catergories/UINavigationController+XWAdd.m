@@ -9,12 +9,12 @@
 
 #import "UINavigationController+XWAdd.h"
 #import "UIBarButtonItem+XWAdd.h"
-#import <objc/runtime.h>
+#import "NSObject+XWAdd.h"
 
 @implementation UINavigationController (XWAdd)
 
 +(void)load{
-    method_exchangeImplementations(class_getInstanceMethod([UINavigationController class], @selector(pushViewController:animated:)), class_getInstanceMethod([UINavigationController class], @selector(xwAdd_pushViewController:animated:)));
+    [self xwAdd_swizzleInstanceMethod:@selector(pushViewController:animated:) with:@selector(_xwAdd_pushViewController:animated:)];
 }
 
 /**如果想要手势在边缘不响应始终响应pop事件而不响应有冲突的collectionView事件，可重写collectionView的hitTest方法，进行判断*/
@@ -23,7 +23,7 @@
     id target = self.interactivePopGestureRecognizer.delegate;
     SEL handleNavigationTransition = NSSelectorFromString(@"handleNavigationTransition:");
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:target action:handleNavigationTransition];
-    objc_setAssociatedObject(pan, "xwAdd_edgeSpacing", @(edgeSpacing), OBJC_ASSOCIATION_RETAIN);
+    [pan xwAdd_setAssociateValue:@(edgeSpacing) withKey:"xwAdd_edgeSpacing"];
     pan.delegate = self;
     [self.view addGestureRecognizer:pan];
     self.interactivePopGestureRecognizer.enabled = NO;
@@ -31,7 +31,7 @@
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
-    CGFloat edgeSpacing = [objc_getAssociatedObject(gestureRecognizer, "xwAdd_edgeSpacing") floatValue];
+    CGFloat edgeSpacing = [[gestureRecognizer xwAdd_getAssociatedValueForKey:"xwAdd_edgeSpacing"] floatValue];
     if (!edgeSpacing) {
         edgeSpacing = MAXFLOAT;
     }
@@ -44,64 +44,67 @@
 #pragma mark - getter methods
 
 
-- (BOOL)xwAdd_hidesBottomBarWhenPushed{
-    return [objc_getAssociatedObject(self, "xwAdd_hidesBottomBarWhenPushed") boolValue];
+- (BOOL)hidesBottomBarWhenEveryPushed{
+    return [[self xwAdd_getAssociatedValueForKey:"xwAdd_hidesBottomBarWhenPushed"] boolValue];
 }
 
-- (UIImage *)xwAdd_customBackImage{
-    return objc_getAssociatedObject(self, "xwAdd_customBackImage");
+- (UIImage *)customBackImage{
+    return [self xwAdd_getAssociatedValueForKey:"xwAdd_customBackImage"];
 }
 
-- (BOOL)xwAdd_hideBottomLine{
-    return [objc_getAssociatedObject(self, "xwAdd_hideBottomLine") boolValue];
+- (BOOL)hideBottomLine{
+    return [[self xwAdd_getAssociatedValueForKey:"xwAdd_hideBottomLine"] boolValue];
 }
 
 #pragma mark - setter methods
 
-- (void)setXwAdd_hidesBottomBarWhenPushed:(BOOL)xwAdd_hidesBottomBarWhenPushed{
-    objc_setAssociatedObject(self, "xwAdd_hidesBottomBarWhenPushed", @(xwAdd_hidesBottomBarWhenPushed), OBJC_ASSOCIATION_RETAIN);
+- (void)setHidesBottomBarWhenEveryPushed:(BOOL)hidesBottomBarWhenEveryPushed{
+    [self xwAdd_setAssociateValue:@(hidesBottomBarWhenEveryPushed) withKey:"xwAdd_hidesBottomBarWhenPushed"];
 }
 
-- (void)setXwAdd_customBackImage:(UIImage *)xwAdd_customBackImage{
-    objc_setAssociatedObject(self, "xwAdd_customBackImage", xwAdd_customBackImage, OBJC_ASSOCIATION_RETAIN);
+- (void)setCustomBackImage:(UIImage *)customBackImage{
+    [self xwAdd_setAssociateValue:customBackImage withKey:"xwAdd_customBackImage"];
 }
 
-- (void)setXwAdd_hideBottomLine:(BOOL)xwAdd_hideBottomLine{
-    objc_setAssociatedObject(self, "xwAdd_hideBottomLine", @(xwAdd_hideBottomLine), OBJC_ASSOCIATION_ASSIGN);
-    if (xwAdd_hideBottomLine) {
-        [self xwp_findHairlineImageViewUnder:self.navigationBar].hidden = YES;
-    }
+- (void)setHideBottomLine:(BOOL)hideBottomLine{
+    [self xwAdd_setAssociateValue:@(hideBottomLine) withKey:"xwAdd_hideBottomLine"];
+    static UIView *lineView = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        lineView = [self _xwAdd_findHairlineImageViewUnder:self.navigationBar];
+    });
+    lineView.hidden = hideBottomLine;
 }
 
 #pragma mark - exchange methods
 
 
-- (void)xwAdd_pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
-    if (self.xwAdd_hidesBottomBarWhenPushed && self.viewControllers.count == 1) {
+- (void)_xwAdd_pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    if (self.hidesBottomBarWhenEveryPushed && self.viewControllers.count == 1) {
         viewController.hidesBottomBarWhenPushed = YES;
     }
-    UIImage *backImage = objc_getAssociatedObject(self, "xwAdd_customBackImage");
+    UIImage *backImage = self.customBackImage;
     if (backImage && self.viewControllers.count > 0) {
-        UIBarButtonItem *temporaryBarButtonItem = [[UIBarButtonItem alloc] initWithImage:backImage style:UIBarButtonItemStyleDone target:self action:@selector(xwp_back)];
+        UIBarButtonItem *temporaryBarButtonItem = [[UIBarButtonItem alloc] initWithImage:backImage style:UIBarButtonItemStyleDone target:self action:@selector(_xwAdd_back)];
         viewController.navigationItem.leftBarButtonItem = temporaryBarButtonItem;
     }
-    [self xwAdd_pushViewController:viewController animated:animated];
+    [self _xwAdd_pushViewController:viewController animated:animated];
 }
 
 #pragma mark - private methods
 
-- (void)xwp_back{
+- (void)_xwAdd_back{
     [self popViewControllerAnimated:YES];
 }
 
 
 
-- (UIImageView *)xwp_findHairlineImageViewUnder:(UIView *)view {
+- (UIImageView *)_xwAdd_findHairlineImageViewUnder:(UIView *)view {
     if ([view isKindOfClass:UIImageView.class] && view.bounds.size.height <= 1.0) {
         return (UIImageView *)view;
     }
     for (UIView *subview in view.subviews) {
-        UIImageView *imageView = [self xwp_findHairlineImageViewUnder:subview];
+        UIImageView *imageView = [self _xwAdd_findHairlineImageViewUnder:subview];
         if (imageView) {
             return imageView;
         }

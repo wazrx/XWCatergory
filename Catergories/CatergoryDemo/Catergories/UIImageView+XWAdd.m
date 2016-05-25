@@ -7,29 +7,29 @@
 //
 
 #import "UIImageView+XWAdd.h"
-#import <objc/runtime.h>
+#import "NSObject+XWAdd.h"
 
 @implementation UIImageView (XWAdd)
 
 + (void)load{
-    method_exchangeImplementations(class_getInstanceMethod([self class], @selector(setImage:)), class_getInstanceMethod([self class], @selector(xwAdd_setImage:)));
+    [self xwAdd_swizzleInstanceMethod:@selector(setImage:) with:@selector(_xwAdd_setImage:)];
 }
 
-- (BOOL)imageAnimation{
-    return [objc_getAssociatedObject(self, "imageAnimation") boolValue];
+- (BOOL)imageChangeWithAnimaiton{
+    return [[self xwAdd_getAssociatedValueForKey:"xwAdd_imageAnimation"] boolValue];
 }
 
-- (void)setImageAnimation:(BOOL)imageAnimation{
-    objc_setAssociatedObject(self, "imageAnimation", @(imageAnimation), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setImageChangeWithAnimaiton:(BOOL)imageChangeWithAnimaiton{
+    [self xwAdd_setAssociateValue: @(imageChangeWithAnimaiton) withKey:"xwAdd_imageAnimation"];
 }
 
-- (void)xwAdd_setImage:(NSString *)image{
-    if (self.imageAnimation) {
+- (void)_xwAdd_setImage:(NSString *)image{
+    if (self.imageChangeWithAnimaiton) {
         [UIView transitionWithView:self duration:1 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-            [self xwAdd_setImage:image];
+            [self _xwAdd_setImage:image];
         } completion:nil];
     }else{
-        [self xwAdd_setImage:image];
+        [self _xwAdd_setImage:image];
     }
 }
 

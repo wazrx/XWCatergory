@@ -23,6 +23,8 @@
 /* Begin PBXBuildFile section */
 		8B1E8DC61CE582D600344F0A /* NSDate+Utilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B1E8DC41CE582D600344F0A /* NSDate+Utilities.h */; };
 		8B1E8DC71CE582D600344F0A /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1E8DC51CE582D600344F0A /* NSDate+Utilities.m */; };
+		8B819F3F1CEB14BA0044A1D5 /* FCFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B819F3D1CEB14BA0044A1D5 /* FCFileManager.h */; };
+		8B819F401CEB14BA0044A1D5 /* FCFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B819F3E1CEB14BA0044A1D5 /* FCFileManager.m */; };
 		D946DE991BD14332006B77F7 /* NSArray+YYAdd.h in Headers */ = {isa = PBXBuildFile; fileRef = D946DE591BD14332006B77F7 /* NSArray+YYAdd.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D946DE9A1BD14332006B77F7 /* NSArray+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = D946DE5A1BD14332006B77F7 /* NSArray+YYAdd.m */; };
 		D946DE9B1BD14332006B77F7 /* NSBundle+YYAdd.h in Headers */ = {isa = PBXBuildFile; fileRef = D946DE5B1BD14332006B77F7 /* NSBundle+YYAdd.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -98,6 +100,8 @@
 /* Begin PBXFileReference section */
 		8B1E8DC41CE582D600344F0A /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
 		8B1E8DC51CE582D600344F0A /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
+		8B819F3D1CEB14BA0044A1D5 /* FCFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCFileManager.h; sourceTree = "<group>"; };
+		8B819F3E1CEB14BA0044A1D5 /* FCFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCFileManager.m; sourceTree = "<group>"; };
 		D946DE4A1BD142CD006B77F7 /* YYCategories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YYCategories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D946DE551BD142F2006B77F7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D946DE591BD14332006B77F7 /* NSArray+YYAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+YYAdd.h"; sourceTree = "<group>"; };
@@ -224,6 +228,8 @@
 		D946DE581BD14332006B77F7 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				8B819F3D1CEB14BA0044A1D5 /* FCFileManager.h */,
+				8B819F3E1CEB14BA0044A1D5 /* FCFileManager.m */,
 				8B1E8DC41CE582D600344F0A /* NSDate+Utilities.h */,
 				8B1E8DC51CE582D600344F0A /* NSDate+Utilities.m */,
 				D946DE5F1BD14332006B77F7 /* NSDate+YYAdd.h */,
@@ -358,6 +364,7 @@
 				D946DEC71BD14332006B77F7 /* UIGestureRecognizer+YYAdd.h in Headers */,
 				D946DECB1BD14332006B77F7 /* UIScreen+YYAdd.h in Headers */,
 				D946DEBB1BD14332006B77F7 /* UIBarButtonItem+YYAdd.h in Headers */,
+				8B819F3F1CEB14BA0044A1D5 /* FCFileManager.h in Headers */,
 				D946DEA31BD14332006B77F7 /* NSKeyedUnarchiver+YYAdd.h in Headers */,
 				D946DEB11BD14332006B77F7 /* NSThread+YYAdd.h in Headers */,
 			);
@@ -464,6 +471,7 @@
 				D946DEC21BD14332006B77F7 /* UIControl+YYAdd.m in Sources */,
 				D946DEB81BD14332006B77F7 /* YYCGUtilities.m in Sources */,
 				D946DEA21BD14332006B77F7 /* NSDictionary+YYAdd.m in Sources */,
+				8B819F401CEB14BA0044A1D5 /* FCFileManager.m in Sources */,
 				D946DEC01BD14332006B77F7 /* UIColor+YYAdd.m in Sources */,
 				D946DEAC1BD14332006B77F7 /* NSObject+YYAddForARC.m in Sources */,
 				D946DEB41BD14332006B77F7 /* NSTimer+YYAdd.m in Sources */,

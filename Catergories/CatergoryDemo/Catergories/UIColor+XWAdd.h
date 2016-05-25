@@ -10,6 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#ifndef UIColorHex
+#define UIColorHex(_hex_)   [UIColor xwAdd_colorWithHexString:((__bridge NSString *)CFSTR(#_hex_))]
+#endif
+
 @interface UIColor (XWAdd)
 
 #pragma mark - fast property (快速获取颜色信息)
@@ -23,12 +27,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) CGFloat brightness;
 @property (nonatomic, readonly) CGFloat alpha;
 @property (nonatomic, readonly) CGColorSpaceModel colorSpaceModel;
+@property (nullable, nonatomic, readonly) NSString *colorSpaceString;
 @property (nonatomic, readonly) uint32_t rgbValue;
 @property (nonatomic, readonly) uint32_t rgbaValue;
-@property (nonatomic, readonly) NSString *hexString;
-@property (nonatomic, readonly) NSString *hexStringWithAlpha;
+@property (nullable, nonatomic, readonly) NSString *hexString;
+@property (nullable, nonatomic, readonly) NSString *hexStringWithAlpha;
 
 #pragma mark - color initailize (颜色初始化相关)
+
 
 /**Color With HSL*/
 + (UIColor *)xwAdd_colorWithHue:(CGFloat)hue
@@ -48,8 +54,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIColor *)xwAdd_colorWithRGB:(uint32_t)rgbValue;
 + (UIColor *)xwAdd_colorWithRGBA:(uint32_t)rgbaValue;
 + (UIColor *)xwAdd_colorWithRGB:(uint32_t)rgbValue alpha:(CGFloat)alpha;
+
 /**Color with hex string*/
-+ (UIColor *)xwAdd_colorWithHexString:(NSString *)hexStr;
++ (nullable UIColor *)xwAdd_colorWithHexString:(NSString *)hexStr;
 
 #pragma mark - color change (颜色改变相关)
 
@@ -80,6 +87,10 @@ NS_ASSUME_NONNULL_BEGIN
  *  @return 插值色
  */
 + (UIColor *)xwAdd_colorWithInterpolationFromValue:(UIColor *)from toValue:(UIColor *)to ratio:(CGFloat)ratio;
+
+#pragma mark - other
+
++ (UIColor *)xwAdd_randomColor;
 
 
 @end

@@ -12,14 +12,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSArray (XWAdd)
 
-- (id)xwAdd_randomObject;
+- (nullable id)xwAdd_randomObject;
+
+- (nullable NSArray *)xwAdd_arrayAfterRandom;
 
 /**objectAtIndex的防止越界的版本，越界返回nil*/
-- (id)xwAdd_objectOrNilAtIndex:(NSUInteger)index;
+- (nullable id)xwAdd_objectOrNilAtIndex:(NSUInteger)index;
 
 
-- (NSString *)xwAdd_jsonStringEncoded;
-- (NSString *)xwAdd_jsonPrettyStringEncoded;
+- (nullable NSString *)xwAdd_jsonStringEncoded;
+- (nullable NSString *)xwAdd_jsonPrettyStringEncoded;
 
 
 @end

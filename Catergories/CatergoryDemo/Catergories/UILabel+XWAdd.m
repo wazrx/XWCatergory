@@ -7,29 +7,29 @@
 //
 
 #import "UILabel+XWAdd.h"
-#import <objc/runtime.h>
+#import "NSObject+XWAdd.h"
 
 @implementation UILabel (XWAdd)
 
 + (void)load{
-    method_exchangeImplementations(class_getInstanceMethod([self class], @selector(setText:)), class_getInstanceMethod([self class], @selector(xwAdd_setText:)));
+    [self xwAdd_swizzleInstanceMethod:@selector(setText:) with:@selector(_xwAdd_setText:)];
 }
 
-- (BOOL)textAnimation{
-    return [objc_getAssociatedObject(self, "textAnimation") boolValue];
+- (BOOL)textChangeWithAnimaiton{
+    return [[self xwAdd_getAssociatedValueForKey:"xwAdd_textAnimation"] boolValue];
 }
 
-- (void)setTextAnimation:(BOOL)textAnimation{
-    objc_setAssociatedObject(self, "textAnimation", @(textAnimation), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setTextChangeWithAnimaiton:(BOOL)textChangeWithAnimaiton{
+    [self xwAdd_setAssociateValue: @(textChangeWithAnimaiton) withKey:"xwAdd_textAnimation"];
 }
 
-- (void)xwAdd_setText:(NSString *)text{
-    if (self.textAnimation) {
+- (void)_xwAdd_setText:(NSString *)text{
+    if (self.textChangeWithAnimaiton) {
         [UIView transitionWithView:self duration:1 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-            [self xwAdd_setText:text];
+            [self _xwAdd_setText:text];
         } completion:nil];
     }else{
-        [self xwAdd_setText:text];
+        [self _xwAdd_setText:text];
     }
 }
 

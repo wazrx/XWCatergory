@@ -12,9 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSMutableDictionary (XWAdd)
 
 /**移除并返回对应key的value*/
-- (id)xwAdd_popObjectForKey:(id)aKey;
+- (nullable id)xwAdd_popObjectForKey:(id)aKey;
 /**移除并返回对应keys数组的values*/
-- (NSDictionary *)xwAdd_popEntriesForKeys:(NSArray *)keys;
+- (nullable NSDictionary *)xwAdd_popEntriesForKeys:(NSArray *)keys;
 
 #pragma mark - weak references (弱引用相关)
 /**将object加入字典但字典对其弱引用*/

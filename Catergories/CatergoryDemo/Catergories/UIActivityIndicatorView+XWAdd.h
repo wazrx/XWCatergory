@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-#define color(r,g,b,a) [UIColor colorWithRed:(r) / 255.0f green:(g) / 255.0f blue:(b) / 255.0f alpha:(a)]
-
-#define indicatorColor color(203, 184, 112, 1)
+NS_ASSUME_NONNULL_BEGIN
 
 @interface UIActivityIndicatorView (XWAdd)
-+ (void)xwAdd_showAnimationInView:(UIView *)view;
+
++ (void)xwAdd_showAnimationInView:(UIView *)view indicatorColor:(UIColor *)color;
 + (void)xwAdd_stopAnimationInView:(UIView *)view;
 @end
+
+NS_ASSUME_NONNULL_END
