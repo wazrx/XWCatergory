@@ -8,6 +8,9 @@
 
 #import "NSNotificationCenter+XWAdd.h"
 #import <pthread.h>
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(NSNotificationCenter_XWAdd)
 
 @implementation NSNotificationCenter (XWAdd)
 

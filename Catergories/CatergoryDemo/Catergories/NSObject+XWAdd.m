@@ -9,7 +9,9 @@
 #import "NSObject+XWAdd.h"
 #import "NSString+XWAdd.h"
 #import <objc/runtime.h>
-#import <AddressBookUI/AddressBookUI.h>
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(NSObject_XWAdd)
 
 @interface _XWNSObjectKVOBlockTarget : NSObject
 
@@ -144,7 +146,7 @@
     }];
 }
 
-static void *KVOBlock = "KVOBlock";
+static void *const KVOBlock = "KVOBlock";
 
 - (void)xwAdd_addObserverBlockForKeyPath:(NSString*)keyPath block:(void (^)(id obj, id oldVal, id newVal))block {
     if (!keyPath || !block) {

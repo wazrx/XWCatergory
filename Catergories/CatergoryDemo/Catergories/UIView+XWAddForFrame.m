@@ -8,10 +8,12 @@
 
 #import "UIView+XWAddForFrame.h"
 #import "NSObject+XWAdd.h"
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(UIView_XWAddForFrame)
 
 
 @implementation UIView (XWAddForFrame)
-
 
 - (CGFloat)xw_left {
     return self.frame.origin.x;
@@ -203,23 +205,14 @@
     [self setXw_centerY:xw_center.y];
 }
 
-- (CGFloat)xw_rightFromSuperView{
-    if (!self.superview) return 0;
-    return self.superview.xw_width - self.xw_right;
+- (CGRect)xw_frame{
+    return self.frame;
 }
 
-- (void)setXw_rightFromSuperView:(CGFloat)xw_rightFromSuperView{
-    if (!self.superview) return;
-    self.xw_left = self.superview.xw_width - self.xw_width - xw_rightFromSuperView;
-}
-
-- (CGFloat)xw_bottomFromSuperView{
-    if (!self.superview) return 0;
-    return self.superview.xw_height - self.xw_bottom;
-}
-
-- (void)setXw_bottomFromSuperView:(CGFloat)xw_bottomFromSuperView{
-    if (!self.superview) return;
-    self.xw_top = self.superview.xw_height - self.xw_height - xw_bottomFromSuperView;
+- (void)setXw_frame:(CGRect)xw_frame{
+    [self setXw_left:xw_frame.origin.x];
+    [self setXw_top:xw_frame.origin.y];
+    [self setXw_width:xw_frame.size.width];
+    [self setXw_height:xw_frame.size.height];
 }
 @end

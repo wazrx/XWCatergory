@@ -9,6 +9,9 @@
 #import "UIActivityIndicatorView+XWAdd.h"
 #import "NSObject+XWAdd.h"
 #import "UIView+XWAdd.h"
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(UIActivityIndicatorView_XWAdd)
 
 @implementation UIActivityIndicatorView (XWAdd)
 

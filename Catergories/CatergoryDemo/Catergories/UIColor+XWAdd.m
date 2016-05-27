@@ -8,6 +8,9 @@
 //
 
 #import "UIColor+XWAdd.h"
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(UIColor_XWAdd)
 
 #define CLAMP_COLOR_VALUE(v) (v) = (v) < 0 ? 0 : (v) > 1 ? 1 : (v)
 

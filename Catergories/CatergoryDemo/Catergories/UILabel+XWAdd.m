@@ -8,6 +8,9 @@
 
 #import "UILabel+XWAdd.h"
 #import "NSObject+XWAdd.h"
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(UILabel_XWAdd)
 
 @implementation UILabel (XWAdd)
 
@@ -16,6 +19,7 @@
 }
 
 - (BOOL)textChangeWithAnimaiton{
+    CGRect t = {0};
     return [[self xwAdd_getAssociatedValueForKey:"xwAdd_textAnimation"] boolValue];
 }
 

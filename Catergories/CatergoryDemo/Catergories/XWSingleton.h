@@ -1,13 +1,13 @@
 //
-//  Singleton.h
+//  XWSingleton.h
 //  test
 //
 //  Created by wazrx on 15/6/28.
 //  Copyright (c) 2015年 wazrx. All rights reserved.
 //
 
-#ifndef test_Singleton_h
-#define test_Singleton_h
+#ifndef XWSingleton_h
+#define XWSingleton_h
 # define SingletonH(name) + (instancetype)share##name;
 
 #if __has_feature(objc_arc)//ARC单例宏

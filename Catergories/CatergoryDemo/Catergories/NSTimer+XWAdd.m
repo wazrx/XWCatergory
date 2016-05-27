@@ -8,6 +8,9 @@
 
 #import "NSTimer+XWAdd.h"
 #import <objc/runtime.h>
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(NSTimer_XWAdd)
 
 @implementation NSTimer (XWAdd)
 

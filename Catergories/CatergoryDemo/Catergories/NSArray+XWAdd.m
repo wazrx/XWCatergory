@@ -7,6 +7,9 @@
 //
 
 #import "NSArray+XWAdd.h"
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(NSArray_XWAdd)
 
 @implementation NSArray (XWAdd)
 

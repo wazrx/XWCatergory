@@ -8,6 +8,9 @@
 
 #import "UIImageView+XWAdd.h"
 #import "NSObject+XWAdd.h"
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(UIImageView_XWAdd)
 
 @implementation UIImageView (XWAdd)
 

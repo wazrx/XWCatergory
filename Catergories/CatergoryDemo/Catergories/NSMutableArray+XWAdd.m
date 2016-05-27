@@ -9,6 +9,9 @@
 
 #import "NSMutableArray+XWAdd.h"
 #import "NSArray+XWAdd.h"
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(NSMutableArray_XWAdd)
 
 @implementation NSMutableArray (XWAdd)
 

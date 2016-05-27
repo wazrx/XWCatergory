@@ -8,6 +8,9 @@
 //
 
 #import "UIScrollView+XWAdd.h"
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(UIScrollView_XWAdd)
 
 @implementation UIScrollView (XWAdd)
 

@@ -8,6 +8,9 @@
 
 #import "UICollectionViewFlowLayout+XWAdd.h"
 #import "NSObject+XWAdd.h"
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(UICollectionViewFlowLayout_XWAdd)
 
 @implementation UICollectionViewFlowLayout (XWAdd)
 

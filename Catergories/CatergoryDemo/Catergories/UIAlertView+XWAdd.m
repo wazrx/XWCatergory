@@ -9,6 +9,9 @@
 #import "UIAlertView+XWAdd.h"
 #import "NSObject+XWAdd.h"
 #import <objc/runtime.h>
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(UIAlertView_XWAdd)
 
 @interface _XWAlertDelegateObject : NSObject<UIAlertViewDelegate>
 

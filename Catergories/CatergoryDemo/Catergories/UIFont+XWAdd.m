@@ -7,6 +7,9 @@
 //
 
 #import "UIFont+XWAdd.h"
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(UIFont_XWAdd)
 
 @implementation UIFont (XWAdd)
 

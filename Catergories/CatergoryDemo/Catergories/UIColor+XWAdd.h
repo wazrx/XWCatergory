@@ -10,8 +10,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#ifndef UIColorHex
-#define UIColorHex(_hex_)   [UIColor xwAdd_colorWithHexString:((__bridge NSString *)CFSTR(#_hex_))]
+#ifdef ColorInteger
+#define ColorInteger(_r_, _g_, _b_) [UIColor colorWithRed:(_r_) / 255.0 green:(_g_) / 255.0 blue:(_b_) / 255.0 alpha:1.0]
+#endif
+
+#ifdef ColorIntegerWithAlpha
+#define colorWithAlpha(_r_, _g_, _b_, _a_) [UIColor colorWithRed:(_r_) / 255.0 green:(_g_) / 255.0 blue:(_b_) / 255.0 alpha:(_a_)]
+#endif
+
+#ifdef ColorFloat
+#define ColorFloat(_r_, _g_, _b_) [UIColor colorWithRed:(_r_) green:(_g_) blue:(_b_) alpha:1.0]
+#endif
+
+#ifndef HexColor
+#define HexColor(_hex_)   [UIColor xwAdd_colorWithHexString:((__bridge NSString *)CFSTR(#_hex_))]
 #endif
 
 @interface UIColor (XWAdd)

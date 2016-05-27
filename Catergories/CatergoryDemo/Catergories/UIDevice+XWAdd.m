@@ -15,6 +15,9 @@
 #import <AdSupport/AdSupport.h>
 #import <CoreLocation/CoreLocation.h>
 #import <objc/runtime.h>
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(UIDevice_XWAdd)
 
 @implementation UIDevice (XWAdd)
 

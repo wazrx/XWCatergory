@@ -7,38 +7,39 @@
 //
 
 #import "ViewController.h"
-#import "NSMutableDictionary+XWAdd.h"
-#import "CALayer+XWAdd.h"
-#import "NSString+XWAdd.h"
-#import "NSTimer+XWAdd.h"
-#import "NSObject+XWAdd.h"
-#import "UIImage+XWAdd.h"
-#import "UIAlertView+XWAdd.h"
-#import "NSObject+YYAddForKVO.h"
-#import "UIView+XWAddForFrame.h"
-#import <AddressBook/AddressBook.h>
-#import <AddressBookUI/AddressBookUI.h>
-#import <objc/runtime.h>
+#import "XWCatergory.h"
 
-@interface ViewController ()<ABPeoplePickerNavigationControllerDelegate>
+@interface ViewController ()
+@property (nonatomic, weak) UILabel *v0;
 @property (nonatomic, weak) UIView *v1;
 @property (nonatomic, weak) UIView *v2;
 @property (nonatomic, weak) UIView *v3;
 @property (nonatomic, weak) UIView *v4;
 @property (nonatomic, weak) UIView *v5;
+@property (nonatomic, strong) UIScrollView *view;
 @end
 
 @implementation ViewController
+
+@dynamic view;
+
+- (void)loadView{
+    self.view = [UIScrollView new];
+    self.view.backgroundColor = [UIColor whiteColor];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self _xw_initializeUI];
     [self _xw_setAbsoluteFrame];
     [self _xw_setRelativeFrame];
+    XWLog("%@", @"wazrx");
 }
+
 
 - (void)_xw_initializeUI{
     UIView *v1 = [UIView new];
+    [v1 addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(test)]];
     _v1 = v1;
     v1.backgroundColor = [UIColor redColor];
     [self.view addSubview:v1];
@@ -61,31 +62,37 @@
 }
 
 - (void)_xw_setAbsoluteFrame{
-    _v1.frame = CGRectMake(10, 10, 100, 100);
+    _v2.xw_frame = CGRectMake(10, 150, 100, 50);
 }
 
 - (void)_xw_setRelativeFrame{
-    _v2.xw_bottom = _v1.xw_centerY - 5;
-    _v2.xw_left = _v1.xw_right + 5;
-    _v2.xw_size = CGSizeMake(100, 15);
+    _v1.xw_bottom = _v2.xw_top - 10;
+    if (_v1.xw_top <= 0) {
+        _v1.xw_top = 0;
+        _v2.xw_top = _v1.xw_bottom + 10;
+    }
+    _v1.xw_left = _v2.xw_left;
+    _v1.xw_size = CGSizeMake(50, 50);
     _v3.xw_left = _v2.xw_right + 5;
     _v3.xw_centerY = _v2.xw_centerY;
     _v3.xw_size = CGSizeMake(20, 20);
     _v4.xw_top = _v1.xw_centerY + 5;
-    _v4.xw_left = _v2.xw_left;
+    _v4.xw_left = _v2.xw_right;
     _v4.xw_size = CGSizeMake(50, 15);
-    _v5.xw_top = _v4.xw_top;
+    _v5.xw_top = _v2.xw_bottom + 10;
     _v5.xw_left = _v4.xw_right + 5;
-    _v5.xw_size = _v4.xw_size;
+    _v5.xw_size = _v2.xw_size;
+    self.view.contentSize = CGSizeMake(kScreenWidth, _v5.xw_bottom);
     
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    static int i = 0;
-    i ++;
-    [UIView animateWithDuration:1 animations:^{
-        CGFloat c = i % 2 ? 40 : 100;
-        _v1.xw_size = CGSizeMake(c, c);
+}
+
+- (void)test{
+    [UIView animateWithDuration:0.25 animations:^{
+        _v2.xw_height += 20;
+        _v2.xw_top -= 10;
         [self _xw_setRelativeFrame];
     }];
 }

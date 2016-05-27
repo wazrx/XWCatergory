@@ -9,6 +9,9 @@
 #import "NSData+XWAdd.h"
 #include <CommonCrypto/CommonCrypto.h>
 #include <zlib.h>
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(NSData_XWAdd)
 
 @implementation NSData (XWAdd)
 - (NSString *)md2String {

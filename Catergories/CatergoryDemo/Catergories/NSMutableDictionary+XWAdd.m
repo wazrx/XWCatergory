@@ -9,6 +9,9 @@
 //
 
 #import "NSMutableDictionary+XWAdd.h"
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(NSMutableDictionary_XWAdd)
 
 typedef id(^XWWeakReferencesBlock)(void);
 
@@ -18,7 +21,7 @@ typedef id(^XWWeakReferencesBlock)(void);
     if (!key) {
         return;
     }
-    [self setObject:[self xwp_makeWeakReferencesObjectBlockWithObject:object] forKey:key];
+    [self setObject:[self _xwAdd_makeWeakReferencesObjectBlockWithObject:object] forKey:key];
 }
 
 - (void)xwAdd_weakSetDictionary:(NSDictionary *)otherDictionary{
@@ -26,7 +29,7 @@ typedef id(^XWWeakReferencesBlock)(void);
         return;
     }
     [otherDictionary enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-        [self setObject:[self xwp_makeWeakReferencesObjectBlockWithObject:obj] forKey:key];
+        [self setObject:[self _xwAdd_makeWeakReferencesObjectBlockWithObject:obj] forKey:key];
     }];
 }
 
@@ -35,13 +38,14 @@ typedef id(^XWWeakReferencesBlock)(void);
     return weakReferencesObjectBlock ? weakReferencesObjectBlock() : nil;
 }
 
-- (XWWeakReferencesBlock)xwp_makeWeakReferencesObjectBlockWithObject:(id)object{
+- (XWWeakReferencesBlock)_xwAdd_makeWeakReferencesObjectBlockWithObject:(id)object{
     if (!object) {
         return nil;
     }
-    __weak id weakObject = object;
+    @weakify(object);
     return ^(){
-        return weakObject;
+        @strongify(object);
+        return object;
     };
 }
 

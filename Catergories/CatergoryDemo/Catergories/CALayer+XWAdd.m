@@ -7,6 +7,9 @@
 //
 
 #import "CALayer+XWAdd.h"
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(CALayer_XWAdd)
 
 @implementation CALayer (XWAdd)
 

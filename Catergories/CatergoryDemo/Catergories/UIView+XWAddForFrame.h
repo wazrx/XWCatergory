@@ -22,12 +22,9 @@
 @property (nonatomic, assign) CGFloat xw_centerX;
 @property (nonatomic, assign) CGFloat xw_centerY;
 
-
-
 @property (nonatomic, assign) CGPoint xw_origin;
 @property (nonatomic, assign) CGPoint  xw_center;
 @property (nonatomic, assign) CGSize  xw_size;
-@property (nonatomic, assign) CGFloat xw_bottomFromSuperView;
-@property (nonatomic, assign) CGFloat xw_rightFromSuperView;
+@property (nonatomic, assign) CGRect xw_frame;
 
 @end

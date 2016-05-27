@@ -11,6 +11,9 @@
 #import "NSData+XWAdd.h"
 #import <CommonCrypto/CommonDigest.h>
 #import <UIKit/UIKit.h>
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(NSString_XWAdd)
 
 @implementation NSString (XWAdd)
 

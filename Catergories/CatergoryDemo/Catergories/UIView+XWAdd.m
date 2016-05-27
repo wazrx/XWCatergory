@@ -10,6 +10,9 @@
 #import "CALayer+XWAdd.h"
 #import "NSObject+XWAdd.h"
 #import <objc/runtime.h>
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(UIView_XWAdd)
 
 @implementation UIView (XWAdd)
 

@@ -8,6 +8,9 @@
 
 #import "NSNumber+XWAdd.h"
 #import "NSString+XWAdd.h"
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(NSNumber_XWAdd)
 
 @implementation NSNumber (XWAdd)
 

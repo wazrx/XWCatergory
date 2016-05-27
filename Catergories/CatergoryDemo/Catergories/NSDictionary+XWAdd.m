@@ -9,6 +9,9 @@
 //
 
 #import "NSDictionary+XWAdd.h"
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(NSDictionary_XWAdd)
 
 @implementation NSDictionary (XWAdd)
 

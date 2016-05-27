@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B0B72221CF68909003AD673 /* UILabel+XWAddForFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B72211CF68909003AD673 /* UILabel+XWAddForFrame.m */; };
 		8B1E8DBD1CE5803700344F0A /* NSDictionary+XWAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1E8DBC1CE5803700344F0A /* NSDictionary+XWAdd.m */; };
 		8B1E8DC01CE5804500344F0A /* NSArray+XWAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1E8DBF1CE5804500344F0A /* NSArray+XWAdd.m */; };
 		8B1E8DC31CE5814000344F0A /* NSDate+XWAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1E8DC21CE5814000344F0A /* NSDate+XWAdd.m */; };
@@ -19,7 +20,6 @@
 		8B52DF9E1CE71FD0005C7E76 /* wazrx@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DF9C1CE71FD0005C7E76 /* wazrx@2x.jpg */; };
 		8B52DFA01CE7205A005C7E76 /* wazrx@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DF9F1CE7205A005C7E76 /* wazrx@3x.jpg */; };
 		8B52DFA31CE722D4005C7E76 /* NSObject+XWAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B52DFA21CE722D4005C7E76 /* NSObject+XWAdd.m */; };
-		8B52DFA61CE746EC005C7E76 /* NSObject+YYAddForKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B52DFA51CE746EC005C7E76 /* NSObject+YYAddForKVO.m */; };
 		8B819EFD1CEAB3D40044A1D5 /* UIScrollView+XWAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B819EFC1CEAB3D40044A1D5 /* UIScrollView+XWAdd.m */; };
 		8B819F001CEAB67B0044A1D5 /* UITableView+XWAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B819EFF1CEAB67B0044A1D5 /* UITableView+XWAdd.m */; };
 		8B819F031CEAB75E0044A1D5 /* UIScreen+XWAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B819F021CEAB75E0044A1D5 /* UIScreen+XWAdd.m */; };
@@ -53,6 +53,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B0AA22C1CF7E10C005C4F18 /* XWCatergory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWCatergory.h; sourceTree = "<group>"; };
+		8B0AA2371CF83519005C4F18 /* XWSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSingleton.h; sourceTree = "<group>"; };
+		8B0B72201CF68909003AD673 /* UILabel+XWAddForFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+XWAddForFrame.h"; sourceTree = "<group>"; };
+		8B0B72211CF68909003AD673 /* UILabel+XWAddForFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+XWAddForFrame.m"; sourceTree = "<group>"; };
 		8B1E8DBB1CE5803700344F0A /* NSDictionary+XWAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+XWAdd.h"; sourceTree = "<group>"; };
 		8B1E8DBC1CE5803700344F0A /* NSDictionary+XWAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+XWAdd.m"; sourceTree = "<group>"; };
 		8B1E8DBE1CE5804500344F0A /* NSArray+XWAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+XWAdd.h"; sourceTree = "<group>"; };
@@ -73,8 +77,6 @@
 		8B52DF9F1CE7205A005C7E76 /* wazrx@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "wazrx@3x.jpg"; sourceTree = "<group>"; };
 		8B52DFA11CE722D4005C7E76 /* NSObject+XWAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+XWAdd.h"; sourceTree = "<group>"; };
 		8B52DFA21CE722D4005C7E76 /* NSObject+XWAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+XWAdd.m"; sourceTree = "<group>"; };
-		8B52DFA41CE746EC005C7E76 /* NSObject+YYAddForKVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYAddForKVO.h"; sourceTree = "<group>"; };
-		8B52DFA51CE746EC005C7E76 /* NSObject+YYAddForKVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYAddForKVO.m"; sourceTree = "<group>"; };
 		8B52DFA71CE74737005C7E76 /* YYCategoriesMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCategoriesMacro.h; sourceTree = "<group>"; };
 		8B819EFB1CEAB3D40044A1D5 /* UIScrollView+XWAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+XWAdd.h"; sourceTree = "<group>"; };
 		8B819EFC1CEAB3D40044A1D5 /* UIScrollView+XWAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+XWAdd.m"; sourceTree = "<group>"; };
@@ -106,7 +108,6 @@
 		8BC5D2601CD986640050D204 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		8BC5D2671CD986640050D204 /* NSString+XWAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XWAdd.h"; sourceTree = "<group>"; };
 		8BC5D2681CD986640050D204 /* NSString+XWAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XWAdd.m"; sourceTree = "<group>"; };
-		8BC5D2691CD986640050D204 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		8BC5D26A1CD986640050D204 /* UIActivityIndicatorView+XWAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActivityIndicatorView+XWAdd.h"; sourceTree = "<group>"; };
 		8BC5D26B1CD986640050D204 /* UIActivityIndicatorView+XWAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActivityIndicatorView+XWAdd.m"; sourceTree = "<group>"; };
 		8BC5D26C1CD986640050D204 /* UIAlertView+XWAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+XWAdd.h"; sourceTree = "<group>"; };
@@ -178,8 +179,6 @@
 				8B52DF9C1CE71FD0005C7E76 /* wazrx@2x.jpg */,
 				8B52DF9F1CE7205A005C7E76 /* wazrx@3x.jpg */,
 				8B52DFA71CE74737005C7E76 /* YYCategoriesMacro.h */,
-				8B52DFA41CE746EC005C7E76 /* NSObject+YYAddForKVO.h */,
-				8B52DFA51CE746EC005C7E76 /* NSObject+YYAddForKVO.m */,
 				8BC5D25D1CD986640050D204 /* Catergories */,
 				8BC5D2521CD986460050D204 /* Assets.xcassets */,
 				8BC5D2541CD986460050D204 /* LaunchScreen.storyboard */,
@@ -200,12 +199,15 @@
 		8BC5D25D1CD986640050D204 /* Catergories */ = {
 			isa = PBXGroup;
 			children = (
+				8B0AA22C1CF7E10C005C4F18 /* XWCatergory.h */,
+				8BAC6F2D1CE96DFF00CFBE11 /* XWCategoriesMacro.h */,
 				8BAC6F2A1CE968A600CFBE11 /* XWCGUtilities.h */,
 				8BAC6F2B1CE968A600CFBE11 /* XWCGUtilities.m */,
-				8BAC6F2D1CE96DFF00CFBE11 /* XWCategoriesMacro.h */,
-				8BC5D2691CD986640050D204 /* Singleton.h */,
+				8B0AA2371CF83519005C4F18 /* XWSingleton.h */,
 				8BF9112E1CF5619800C9C574 /* UIView+XWAddForFrame.h */,
 				8BF9112F1CF5619800C9C574 /* UIView+XWAddForFrame.m */,
+				8B0B72201CF68909003AD673 /* UILabel+XWAddForFrame.h */,
+				8B0B72211CF68909003AD673 /* UILabel+XWAddForFrame.m */,
 				8BC5D2601CD986640050D204 /* Foundation+Log.m */,
 				8BC5D25E1CD986640050D204 /* CALayer+XWAdd.h */,
 				8BC5D25F1CD986640050D204 /* CALayer+XWAdd.m */,
@@ -344,7 +346,6 @@
 			files = (
 				8B819EFD1CEAB3D40044A1D5 /* UIScrollView+XWAdd.m in Sources */,
 				8B1E8DC31CE5814000344F0A /* NSDate+XWAdd.m in Sources */,
-				8B52DFA61CE746EC005C7E76 /* NSObject+YYAddForKVO.m in Sources */,
 				8B819F091CEAC5970044A1D5 /* UIFont+XWAdd.m in Sources */,
 				8BC5D2931CD986640050D204 /* UIImage+XWAdd.m in Sources */,
 				8BC5D28D1CD986640050D204 /* UIAlertView+XWAdd.m in Sources */,
@@ -354,6 +355,7 @@
 				8BC5D2961CD986640050D204 /* UINavigationController+XWAdd.m in Sources */,
 				8B1E8DC01CE5804500344F0A /* NSArray+XWAdd.m in Sources */,
 				8B819F0C1CEACA8C0044A1D5 /* UIBezierPath+XWAdd.m in Sources */,
+				8B0B72221CF68909003AD673 /* UILabel+XWAddForFrame.m in Sources */,
 				8BC5D28C1CD986640050D204 /* UIActivityIndicatorView+XWAdd.m in Sources */,
 				8BC5D2941CD986640050D204 /* UIImageView+XWAdd.m in Sources */,
 				8B819F031CEAB75E0044A1D5 /* UIScreen+XWAdd.m in Sources */,

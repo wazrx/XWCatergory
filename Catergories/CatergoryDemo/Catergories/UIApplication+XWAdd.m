@@ -11,6 +11,9 @@
 #import <sys/sysctl.h>
 #import <mach/mach.h>
 #import <objc/runtime.h>
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(UIApplication_XWAdd)
 
 @implementation UIApplication (XWAdd)
 

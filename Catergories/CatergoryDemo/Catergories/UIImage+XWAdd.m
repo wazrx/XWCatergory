@@ -11,6 +11,9 @@
 #import "XWCategoriesMacro.h"
 #import <Accelerate/Accelerate.h>
 #import <CoreText/CoreText.h>
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(UIImage_XWAdd)
 
 @implementation UIImage (XWAdd)
 

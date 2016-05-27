@@ -7,6 +7,9 @@
 //
 
 #import "UITableView+XWAdd.h"
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(UITableView_XWAdd)
 
 @implementation UITableView (XWAdd)
 

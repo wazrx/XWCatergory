@@ -10,6 +10,9 @@
 #import "UIBezierPath+XWAdd.h"
 #import "UIFont+XWAdd.h"
 #import <CoreText/CoreText.h>
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(UIBezierPath_XWAdd)
 
 @implementation UIBezierPath (XWAdd)
 

@@ -10,6 +10,9 @@
 #import "UINavigationController+XWAdd.h"
 #import "UIBarButtonItem+XWAdd.h"
 #import "NSObject+XWAdd.h"
+#import "XWCategoriesMacro.h"
+
+XWSYNTH_DUMMY_CLASS(UINavigationController_XWAdd)
 
 @implementation UINavigationController (XWAdd)
 
